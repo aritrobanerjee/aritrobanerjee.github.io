@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --bg: #0a0a0a;
+  --fg: #ededed;
+  --muted: #71717a;
+  --border: #222225;
+}
+
+html {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Document-style link interactions inspired by paco.me */
+.text-link {
+  color: #ededed;
+  text-decoration: underline;
+  text-decoration-color: #3f3f46;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.text-link:hover {
+  color: #ffffff;
+  text-decoration-color: #ededed;
+}
+
+.secondary-link {
+  color: #a1a1aa;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.secondary-link:hover {
+  color: #ededed;
+}
+
+/* Expandable content animation using CSS grid */
+.expandable-grid {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 200ms cubic-bezier(0.4, 0, 0.2, 1), opacity 150ms ease;
+  opacity: 0;
+}
+
+.expandable-grid.expanded {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.expandable-inner {
+  overflow: hidden;
+}
+
+/* Custom minimal scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}

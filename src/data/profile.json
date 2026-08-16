@@ -1,0 +1,185 @@
+{
+  "name": "Aritro Banerjee",
+  "pronouns": "he/him",
+  "title": "Product Manager",
+  "company": "Google",
+  "location": "Austin, Texas",
+  "availableForWork": false,
+  "statusText": "Austin, TX · Google",
+  "bio": "Focused on building enduring products that delight users and positively impact society, empowering high-trust teams to do their best work, and turning complex systems into simple, cohesive user experiences.",
+  "experience": [
+    {
+      "id": "google",
+      "company": "Google",
+      "period": "2021 — Present",
+      "location": "Austin, TX & Chicago, IL",
+      "roles": [
+        {
+          "title": "Product Manager, Google Play Services",
+          "period": "2026 — Present",
+          "summary": "Core developer APIs and platform capabilities powering global Android services.",
+          "details": [
+            "Leading developer-facing platform capabilities and foundational APIs across Android ecosystem.",
+            "Cross-functional roadmap alignment with engineering and developer relations."
+          ],
+          "current": true
+        },
+        {
+          "title": "Global Product Lead, Google Ads",
+          "period": "2022 — 2026",
+          "summary": "Global product go-to-market strategy, commercialization, and causal impact measurement for Ads solutions.",
+          "details": [
+            "Drove international adoption and commercialization for measurement and ads platforms.",
+            "Led causal impact measurement initiatives to guide product roadmaps and strategic advertiser adoption."
+          ]
+        },
+        {
+          "title": "Technical Account Manager",
+          "period": "2021 — 2022",
+          "summary": "Operational rigor, cloud architecture optimization, and mission-critical customer experience.",
+          "details": [
+            "Led multi-team technical engagements supporting enterprise cloud migrations and system reliability."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "depaul",
+      "company": "DePaul University",
+      "period": "2023 — 2025",
+      "location": "Chicago, IL",
+      "roles": [
+        {
+          "title": "Lecturer, Enterprise Cloud Computing",
+          "period": "2023 — 2025",
+          "summary": "Graduate faculty for MS in Information Systems teaching distributed systems and cloud architecture.",
+          "details": [
+            "Designed and delivered curriculum on cloud architecture, distributed systems patterns, and production operations.",
+            "Mentored graduate students on practical cloud implementations."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deloitte",
+      "company": "Deloitte Consulting",
+      "period": "2018 — 2021",
+      "location": "Chicago, IL",
+      "roles": [
+        {
+          "title": "Consultant, Data Products",
+          "period": "2019 — 2021",
+          "summary": "Strategy and analytics consulting for big data platforms and enterprise data warehousing.",
+          "details": [
+            "Delivered data warehousing and analytics architectures for Fortune 500 industrial and enterprise clients.",
+            "Engineered scalable data pipelines aligned with enterprise business strategy."
+          ]
+        },
+        {
+          "title": "Summer Associate, Data Products",
+          "period": "2018",
+          "summary": "Agile data analytics and cross-industry data product implementations.",
+          "details": [
+            "Designed big data analytics models and project workflows for enterprise clients."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "indiana-univ",
+      "company": "Indiana University Bloomington",
+      "period": "2018",
+      "location": "Bloomington, IN",
+      "roles": [
+        {
+          "title": "Graduate Assistant & IT Specialist",
+          "period": "2018",
+          "summary": "Supported MSIS core modules in IT case analysis and built RPS dining management databases.",
+          "details": [
+            "Assisted graduate students in IT management and strategy case studies.",
+            "Engineered database workflows for campus enterprise applications."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "thorogood",
+      "company": "Thorogood Associates",
+      "period": "2015 — 2017",
+      "location": "Bengaluru, India",
+      "roles": [
+        {
+          "title": "BI & Analytics Consultant",
+          "period": "2015 — 2017",
+          "summary": "End-to-end business intelligence, data architectures, and analytical reporting solutions.",
+          "details": [
+            "Architected enterprise reporting solutions, ETL data workflows, and multi-dimensional analytics models.",
+            "Consulted for Fortune 500 enterprises on data modernization and analytics strategy."
+          ]
+        }
+      ]
+    }
+  ],
+  "focus": [
+    {
+      "label": "platforms",
+      "description": "developer-facing APIs & SDKs, platform architecture, global ecosystem scaling"
+    },
+    {
+      "label": "commercialization",
+      "description": "global product GTM, product lifecycle, causal impact measurement & telemetry"
+    },
+    {
+      "label": "data systems",
+      "description": "enterprise data platforms, big data warehousing, telemetry & pipeline design"
+    }
+  ],
+  "education": [
+    {
+      "institution": "Indiana University - Kelley School of Business",
+      "degree": "Master of Science (MS), Information Systems",
+      "field": "Business Intelligence and Analytics Concentration",
+      "period": "2017 — 2018",
+      "gpa": "4.00 / 4.00",
+      "category": "degree",
+      "details": "President @ Enterprise Systems Club IU · Graduate Teaching Assistant (Case Analysis & IT Strategy, MSIS Core X501)"
+    },
+    {
+      "institution": "National Institute of Technology Karnataka",
+      "degree": "Bachelor of Technology (B.Tech.), Electrical and Electronics Engineering",
+      "field": "Electrical & Electronics Engineering",
+      "period": "2011 — 2015",
+      "gpa": "3.54 / 4.00",
+      "category": "degree",
+      "details": "Computer Society of India · Project Renewable Energy Vehicle · Shiksha"
+    },
+    {
+      "institution": "Indian School Muscat",
+      "degree": "CBSE XII Board Exams (AISSCE)",
+      "period": "2009 — 2011",
+      "score": "95.2%",
+      "category": "achievement",
+      "details": "Awarded INSPIRE Scholarship for Higher Education by CBSE and DST for top aggregate performance"
+    }
+  ],
+  "links": [
+    {
+      "label": "linkedin",
+      "url": "https://www.linkedin.com/in/aritrobanerjee",
+      "handle": "in/aritrobanerjee",
+      "isExternal": true
+    },
+    {
+      "label": "github",
+      "url": "https://github.com/aritrobanerjee",
+      "handle": "@aritrobanerjee",
+      "isExternal": true
+    },
+    {
+      "label": "email",
+      "url": "mailto:aritrobanerjee@gmail.com",
+      "handle": "aritrobanerjee [at] gmail.com",
+      "isExternal": false
+    }
+  ]
+}
