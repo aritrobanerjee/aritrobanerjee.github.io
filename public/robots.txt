@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aritrobanerjee.github.io/sitemap.xml
