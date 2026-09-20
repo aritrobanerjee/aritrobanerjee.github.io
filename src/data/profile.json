@@ -126,8 +126,8 @@
       "description": "Developer SDKs, backward-compatible runtime APIs, and platform primitives across billions of active devices."
     },
     {
-      "label": "causal inference",
-      "description": "Quasi-experimentation (synthetic controls, DiD), counterfactual modeling, and measurement when A/B tests break."
+      "label": "data",
+      "description": "Data analytics, data science products, and commercial monetization models driving measurable business impact."
     },
     {
       "label": "distributed systems",
