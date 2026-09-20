@@ -9,7 +9,7 @@ export const WritingSection: React.FC<WritingSectionProps> = ({ onSelectArticle 
     <section className="space-y-6">
       <div className="border-b border-[#18181b] pb-2">
         <h2 className="text-[11px] font-mono uppercase tracking-[0.15em] text-[#82828b]">
-          Writing
+          Projects
         </h2>
       </div>
 
