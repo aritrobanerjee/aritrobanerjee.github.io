@@ -2,6 +2,11 @@
 
 *A first-principles guide to causal inference, SUTVA violations, and quasi-experimentation when A/B tests fail in platform ecosystems.*
 
+> **Status: Work in Progress [WIP]**  
+> *Drafting thesis, core principles, and operational case studies from developer platforms and distributed systems.*
+
+---
+
 ## Part I // The Invisible Failure
 
 I've sat in a lot of product reviews where someone pulls up an A/B test dashboard, points at a green p-value badge, and says "ship it." And most of the time, that's fine. If you're testing a new onboarding flow or a button placement on a consumer website, a coin flip works.

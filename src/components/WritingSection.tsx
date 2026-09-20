@@ -36,6 +36,9 @@ export const WritingSection: React.FC<WritingSectionProps> = ({ onSelectArticle 
                 How to Measure What Can't Be Tested
               </h3>
             </div>
+            <span className="text-[10px] font-mono tracking-wider uppercase px-2 py-0.5 rounded bg-[#161619] border border-[#27272a] text-[#8e8e93] group-hover:text-[#d4d4d8] group-hover:border-[#383840] transition-colors">
+              WIP
+            </span>
           </div>
         </div>
 
