@@ -18,6 +18,7 @@ if (fs.existsSync(indexPath)) {
   const routes = [
     'writing/causal-measurement',
     'writing/design-what-cant-be-imagined',
+    'writing/build-what-cant-be-defined',
   ];
 
   routes.forEach((route) => {

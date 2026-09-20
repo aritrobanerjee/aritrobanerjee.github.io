@@ -10,10 +10,15 @@ import { CardDeckBackground } from './components/CardDeckBackground';
 import { WritingSection } from './components/WritingSection';
 import { CausalMeasurementEssay } from './components/CausalMeasurementEssay';
 import { DesignEssay } from './components/DesignEssay';
+import { BuildEssay } from './components/BuildEssay';
 
 const profile: ProfileData = profileData as ProfileData;
 
-type ViewState = 'home' | 'causal-measurement' | 'design-what-cant-be-imagined';
+type ViewState =
+  | 'home'
+  | 'causal-measurement'
+  | 'design-what-cant-be-imagined'
+  | 'build-what-cant-be-defined';
 
 export const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<ViewState>('home');
@@ -31,6 +36,11 @@ export const App: React.FC = () => {
         setCurrentView('design-what-cant-be-imagined');
         return;
       }
+      if (window.location.hash.includes('build-what-cant-be-defined')) {
+        window.history.replaceState(null, '', '/writing/build-what-cant-be-defined');
+        setCurrentView('build-what-cant-be-defined');
+        return;
+      }
 
       // Check URL pathname (strip trailing slashes)
       const path = window.location.pathname.replace(/\/$/, '');
@@ -38,6 +48,8 @@ export const App: React.FC = () => {
         setCurrentView('causal-measurement');
       } else if (path === '/writing/design-what-cant-be-imagined') {
         setCurrentView('design-what-cant-be-imagined');
+      } else if (path === '/writing/build-what-cant-be-defined') {
+        setCurrentView('build-what-cant-be-defined');
       } else {
         setCurrentView('home');
       }
@@ -56,6 +68,10 @@ export const App: React.FC = () => {
     } else if (articleId === 'design-what-cant-be-imagined') {
       window.history.pushState(null, '', '/writing/design-what-cant-be-imagined');
       setCurrentView('design-what-cant-be-imagined');
+      window.scrollTo(0, 0);
+    } else if (articleId === 'build-what-cant-be-defined') {
+      window.history.pushState(null, '', '/writing/build-what-cant-be-defined');
+      setCurrentView('build-what-cant-be-defined');
       window.scrollTo(0, 0);
     }
   };
@@ -104,6 +120,10 @@ export const App: React.FC = () => {
 
         {currentView === 'design-what-cant-be-imagined' && (
           <DesignEssay onBack={navigateToHome} />
+        )}
+
+        {currentView === 'build-what-cant-be-defined' && (
+          <BuildEssay onBack={navigateToHome} />
         )}
       </main>
     </div>
