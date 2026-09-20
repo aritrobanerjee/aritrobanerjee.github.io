@@ -50,7 +50,7 @@ export const App: React.FC = () => {
       {/* Main Content Container */}
       <main
         id="portfolio-content"
-        className={`relative z-10 mx-auto px-6 py-16 md:py-24 max-w-[720px] ${
+        className={`relative z-10 mx-auto px-6 py-16 md:py-24 xl:py-28 max-w-[720px] ${
           currentView === 'home' ? 'space-y-12 md:space-y-14' : ''
         }`}
       >
