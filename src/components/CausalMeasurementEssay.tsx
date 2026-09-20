@@ -65,49 +65,6 @@ export const CausalMeasurementEssay: React.FC<CausalMeasurementEssayProps> = ({ 
         style={{ width: `${scrollProgress}%` }}
       />
 
-      {/* Widescreen Sticky Gutter Outline (strictly hidden on mobile and tablet) */}
-      <aside
-        aria-label="Table of contents"
-        className="hidden xl:block fixed left-[max(1.5rem,calc(50%-550px))] top-28 w-40 z-20 select-none"
-      >
-        <div className="space-y-3.5">
-          <div className="text-[11px] font-mono uppercase tracking-[0.15em] text-[#82828b]">
-            Contents
-          </div>
-          <nav className="space-y-2 font-mono text-[12px]">
-            {TOC_ITEMS.map((item) => (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className={`group flex items-start gap-2 transition-all duration-150 ${
-                  activeSection === item.id
-                    ? 'text-white translate-x-1 font-medium'
-                    : 'text-[#82828b] hover:text-[#d4d4d8]'
-                }`}
-              >
-                <span
-                  className={`text-[10px] pt-0.5 ${
-                    activeSection === item.id ? 'text-white' : 'text-[#52525b] group-hover:text-[#82828b]'
-                  }`}
-                >
-                  {item.num}
-                </span>
-                <span className="leading-snug">
-                  {item.label}
-                  {item.isWip && (
-                    <span className="text-[9.5px] text-[#52525b] ml-1">[wip]</span>
-                  )}
-                </span>
-              </a>
-            ))}
-          </nav>
-        </div>
-      </aside>
-
       {/* Top Navigation */}
       <nav className="flex items-center justify-between border-b border-[#18181b] pb-3">
         <button
@@ -122,9 +79,55 @@ export const CausalMeasurementEssay: React.FC<CausalMeasurementEssayProps> = ({ 
         </button>
       </nav>
 
-      {/* Markdown Content Renderer */}
-      <div className="prose prose-invert max-w-none space-y-6 text-[14.5px] md:text-[15.5px] leading-[1.8] text-[#d4d4d8]">
-        <ReactMarkdown
+      {/* Main Content Area: Responsive Grid on xl */}
+      <div className="xl:grid xl:grid-cols-[190px_1fr] xl:gap-14 items-start">
+        {/* Widescreen Sticky Gutter Outline (strictly hidden on mobile and tablet) */}
+        <aside
+          aria-label="Table of contents"
+          className="hidden xl:block sticky top-28 select-none"
+        >
+          <div className="space-y-3.5">
+            <div className="text-[11px] font-mono uppercase tracking-[0.15em] text-[#82828b]">
+              Contents
+            </div>
+            <nav className="space-y-2 font-mono text-[12px]">
+              {TOC_ITEMS.map((item) => (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className={`group flex items-start gap-2 transition-all duration-150 ${
+                    activeSection === item.id
+                      ? 'text-white translate-x-1 font-medium'
+                      : 'text-[#82828b] hover:text-[#d4d4d8]'
+                  }`}
+                >
+                  <span
+                    className={`text-[10px] pt-0.5 ${
+                      activeSection === item.id ? 'text-white' : 'text-[#52525b] group-hover:text-[#82828b]'
+                    }`}
+                  >
+                    {item.num}
+                  </span>
+                  <span className="leading-snug">
+                    {item.label}
+                    {item.isWip && (
+                      <span className="text-[9.5px] text-[#52525b] ml-1">[wip]</span>
+                    )}
+                  </span>
+                </a>
+              ))}
+            </nav>
+          </div>
+        </aside>
+
+        {/* Essay Content Area */}
+        <div className="min-w-0">
+          <div className="prose prose-invert max-w-none space-y-6 text-[14.5px] md:text-[15.5px] leading-[1.8] text-[#d4d4d8]">
+            <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           components={{
             h1: ({ children }) => (
@@ -268,6 +271,8 @@ export const CausalMeasurementEssay: React.FC<CausalMeasurementEssayProps> = ({ 
           </button>
         </div>
       </footer>
+        </div>
+      </div>
     </article>
   );
 };
