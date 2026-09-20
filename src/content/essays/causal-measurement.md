@@ -59,13 +59,15 @@ But the motion *did* work. The productivity gains were real. What went wrong was
 
 We were trying to detect a +1.5% lift with a test design that was mathematically blind to anything under +6%. It was like trying to read a street sign with binoculars that only focus past a mile.
 
-* **User-Level A/B Test:** ~50,000,000 units $\rightarrow$ Can detect lifts as small as **~0.1%**
-* **Geo-Cluster Experiment:** ~200 units $\rightarrow$ Can only detect lifts above **~4-8%**
+| Test Design | Sample Size ($N$) | Minimum Detectable Lift |
+| :--- | :--- | :--- |
+| **User-Level A/B Test** | ~50,000,000 users | Can detect lifts as small as **~0.1%** |
+| **Geo-Cluster Experiment** | ~200 markets / clusters | Can only detect lifts above **~4–8%** |
 
 > **The Square-Root Law of Cluster Power:**  
 > The minimum detectable effect scales inversely with the square root of your cluster count:  
 > `MDE ∝ σ / √N_clusters`  
-> When N collapses from 50,000,000 users to 200 DMAs, your denominator shrinks by a factor of 500 — exploding your minimum detectable threshold.  
+> When $N$ collapses from 50,000,000 users to 200 DMAs, your denominator shrinks by a factor of 500 — exploding your minimum detectable threshold.  
 > *(In practice, Synthetic Control MDE also depends on how well the control tracks your treatment unit during the pre-treatment window and the planned test duration. Better fit and longer tests let you detect smaller effects.)*
 
 ---
