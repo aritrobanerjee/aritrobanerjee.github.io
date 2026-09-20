@@ -60,15 +60,13 @@ export const App: React.FC = () => {
       {/* Main Content Container */}
       <main
         id="portfolio-content"
-        className={`relative z-10 mx-auto px-6 py-16 md:py-24 xl:py-28 max-w-[720px] lg:max-w-[960px] xl:max-w-[1040px] ${
-          currentView === 'home' ? 'space-y-12 md:space-y-14' : ''
-        }`}
+        className="relative z-10 mx-auto px-6 py-16 md:py-24 xl:py-28 max-w-[720px] lg:max-w-[960px] xl:max-w-[1040px] space-y-12 md:space-y-14"
       >
+        {/* Header Section (Persistent on both Home and Essay views) */}
+        <Header profile={profile} />
+
         {currentView === 'home' ? (
           <>
-            {/* Header Section */}
-            <Header profile={profile} />
-
             {/* Writing & Case Studies Section */}
             <WritingSection onSelectArticle={navigateToArticle} />
 
