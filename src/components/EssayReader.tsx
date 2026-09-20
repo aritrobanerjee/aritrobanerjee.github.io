@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import profileData from '../data/profile.json';
+import { Connect } from './Connect';
 
 interface EssayReaderProps {
   markdown: string;
@@ -164,27 +166,10 @@ export const EssayReader: React.FC<EssayReaderProps> = ({ markdown, icon, onBack
         </ReactMarkdown>
       </div>
 
-      {/* Footer / Copyright */}
-      <footer className="border-t border-[#18181b] pt-8 space-y-5 mt-14">
-        <div className="text-[11.5px] font-mono text-[#82828b]">
-          © {new Date().getFullYear()} Aritro Banerjee. All rights reserved.
-        </div>
-
-        <div className="flex items-center justify-between text-xs font-mono text-[#8e8e93] pt-2">
-          <button
-            onClick={onBack}
-            className="hover:text-white transition-colors"
-          >
-            ← Back
-          </button>
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="hover:text-white transition-colors"
-          >
-            ↑ Back to top
-          </button>
-        </div>
-      </footer>
+      {/* Connect & Footer */}
+      <div className="mt-14">
+        <Connect links={profileData.links} onBack={onBack} />
+      </div>
     </article>
   );
 };

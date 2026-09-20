@@ -3,9 +3,10 @@ import { LinkItem } from '../types/profile';
 
 interface ConnectProps {
   links: LinkItem[];
+  onBack?: () => void;
 }
 
-export const Connect: React.FC<ConnectProps> = ({ links }) => {
+export const Connect: React.FC<ConnectProps> = ({ links, onBack }) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopyEmail = (emailStr: string) => {
@@ -57,6 +58,22 @@ export const Connect: React.FC<ConnectProps> = ({ links }) => {
 
       <div className="pt-4 border-t border-[#18181b]/60 flex items-center justify-between text-[11.5px] font-mono text-[#82828b]">
         <span>© {new Date().getFullYear()} Aritro Banerjee. All rights reserved.</span>
+        {onBack && (
+          <div className="flex items-center gap-4 text-xs font-mono text-[#8e8e93]">
+            <button
+              onClick={onBack}
+              className="hover:text-white transition-colors"
+            >
+              ← Back
+            </button>
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="hover:text-white transition-colors"
+            >
+              ↑ Back to top
+            </button>
+          </div>
+        )}
       </div>
     </footer>
   );
