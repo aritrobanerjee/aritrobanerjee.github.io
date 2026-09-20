@@ -14,9 +14,16 @@ if (fs.existsSync(indexPath)) {
   fs.copyFileSync(indexPath, notFoundPath);
   console.log('✓ Created dist/404.html for GitHub Pages SPA routing');
 
-  // 2. Create physical folder dist/writing/causal-measurement/index.html for direct HTTP 200
-  const essayDir = path.join(distDir, 'writing/causal-measurement');
-  fs.mkdirSync(essayDir, { recursive: true });
-  fs.copyFileSync(indexPath, path.join(essayDir, 'index.html'));
-  console.log('✓ Created dist/writing/causal-measurement/index.html for direct HTTP 200 routing');
+  // 2. Create physical folder routes for direct HTTP 200 on GitHub Pages
+  const routes = [
+    'writing/causal-measurement',
+    'writing/design-what-cant-be-imagined',
+  ];
+
+  routes.forEach((route) => {
+    const routeDir = path.join(distDir, route);
+    fs.mkdirSync(routeDir, { recursive: true });
+    fs.copyFileSync(indexPath, path.join(routeDir, 'index.html'));
+    console.log(`✓ Created dist/${route}/index.html for direct HTTP 200 routing`);
+  });
 }

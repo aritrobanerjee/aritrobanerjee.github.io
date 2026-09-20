@@ -9,11 +9,14 @@ import { Connect } from './components/Connect';
 import { CardDeckBackground } from './components/CardDeckBackground';
 import { WritingSection } from './components/WritingSection';
 import { CausalMeasurementEssay } from './components/CausalMeasurementEssay';
+import { DesignEssay } from './components/DesignEssay';
 
 const profile: ProfileData = profileData as ProfileData;
 
+type ViewState = 'home' | 'causal-measurement' | 'design-what-cant-be-imagined';
+
 export const App: React.FC = () => {
-  const [currentView, setCurrentView] = useState<'home' | 'causal-measurement'>('home');
+  const [currentView, setCurrentView] = useState<ViewState>('home');
 
   useEffect(() => {
     const handleLocationChange = () => {
@@ -23,11 +26,18 @@ export const App: React.FC = () => {
         setCurrentView('causal-measurement');
         return;
       }
+      if (window.location.hash.includes('design-what-cant-be-imagined')) {
+        window.history.replaceState(null, '', '/writing/design-what-cant-be-imagined');
+        setCurrentView('design-what-cant-be-imagined');
+        return;
+      }
 
       // Check URL pathname (strip trailing slashes)
       const path = window.location.pathname.replace(/\/$/, '');
       if (path === '/writing/causal-measurement') {
         setCurrentView('causal-measurement');
+      } else if (path === '/writing/design-what-cant-be-imagined') {
+        setCurrentView('design-what-cant-be-imagined');
       } else {
         setCurrentView('home');
       }
@@ -42,6 +52,10 @@ export const App: React.FC = () => {
     if (articleId === 'causal-measurement') {
       window.history.pushState(null, '', '/writing/causal-measurement');
       setCurrentView('causal-measurement');
+      window.scrollTo(0, 0);
+    } else if (articleId === 'design-what-cant-be-imagined') {
+      window.history.pushState(null, '', '/writing/design-what-cant-be-imagined');
+      setCurrentView('design-what-cant-be-imagined');
       window.scrollTo(0, 0);
     }
   };
@@ -65,7 +79,7 @@ export const App: React.FC = () => {
         {/* Header Section (Persistent on both Home and Essay views, bio hidden on essay) */}
         <Header profile={profile} showBio={currentView === 'home'} />
 
-        {currentView === 'home' ? (
+        {currentView === 'home' && (
           <>
             {/* Writing & Case Studies Section */}
             <WritingSection onSelectArticle={navigateToArticle} />
@@ -82,9 +96,14 @@ export const App: React.FC = () => {
             {/* Footer / Connect Section */}
             <Connect links={profile.links} />
           </>
-        ) : (
-          /* Case Study View */
+        )}
+
+        {currentView === 'causal-measurement' && (
           <CausalMeasurementEssay onBack={navigateToHome} />
+        )}
+
+        {currentView === 'design-what-cant-be-imagined' && (
+          <DesignEssay onBack={navigateToHome} />
         )}
       </main>
     </div>
