@@ -62,7 +62,7 @@ function markdownToHarvardHtml(md, title = 'Aritro Banerjee - Resume') {
     }
 
     // Contact line
-    if (rawLine.includes('aritrobanerjee@gmail.com') || (rawLine.includes('|') && (rawLine.includes('@') || rawLine.includes('linkedin.com')))) {
+    if (rawLine.includes('|') && (rawLine.includes('@') || rawLine.includes('linkedin.com') || rawLine.includes('github.io'))) {
       closeList();
       bodyHtml += `<div class="contact-line">${formatInline(rawLine)}</div>\n`;
       continue;
@@ -222,10 +222,18 @@ ${bodyHtml}
 
 function findBrowserPath() {
   const paths = [
+    // Windows
     'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
     'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe',
     'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe',
-    'C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe'
+    'C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe',
+    // macOS
+    '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+    '/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge',
+    // Linux
+    '/usr/bin/google-chrome',
+    '/usr/bin/chromium-browser',
+    '/usr/bin/chromium'
   ];
 
   for (const p of paths) {

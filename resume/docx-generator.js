@@ -159,7 +159,7 @@ export function markdownToDocxBody(markdown) {
     }
 
     // Contact line
-    if (rawLine.includes('aritrobanerjee@gmail.com') || (rawLine.includes('|') && (rawLine.includes('@') || rawLine.includes('linkedin.com')))) {
+    if (rawLine.includes('|') && (rawLine.includes('@') || rawLine.includes('linkedin.com') || rawLine.includes('github.io'))) {
       bodyXml += `<w:p><w:pPr><w:jc w:val="center"/><w:spacing w:before="0" w:after="160" w:line="240" w:lineRule="auto"/></w:pPr>${parseRunsXml(rawLine, 19)}</w:p>`;
       continue;
     }
