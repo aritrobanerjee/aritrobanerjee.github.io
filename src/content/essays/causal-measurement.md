@@ -2,7 +2,7 @@
 
 *A first-principles guide to causal inference, SUTVA violations, and quasi-experimentation when A/B tests fail in platform ecosystems.*
 
-**By Aritro Banerjee** · Platform PM, Google Play Services  
+**By Aritro Banerjee**  
 *March 2026 · 12 min read · Causal Inference*
 
 ---
