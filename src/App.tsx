@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import profileData from './data/profile.json';
 import { ProfileData } from './types/profile';
 import { Header } from './components/Header';
@@ -7,34 +7,77 @@ import { Focus } from './components/Focus';
 import { Education } from './components/Education';
 import { Connect } from './components/Connect';
 import { CardDeckBackground } from './components/CardDeckBackground';
+import { WritingSection } from './components/WritingSection';
+import { CausalMeasurementEssay } from './components/CausalMeasurementEssay';
 
 const profile: ProfileData = profileData as ProfileData;
 
 export const App: React.FC = () => {
+  const [currentView, setCurrentView] = useState<'home' | 'causal-measurement'>('home');
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash === '#/writing/causal-measurement' || hash === '#causal-measurement') {
+        setCurrentView('causal-measurement');
+      } else {
+        setCurrentView('home');
+      }
+    };
+
+    handleHashChange();
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  const navigateToArticle = (articleId: string) => {
+    if (articleId === 'causal-measurement') {
+      window.location.hash = '#/writing/causal-measurement';
+      setCurrentView('causal-measurement');
+    }
+  };
+
+  const navigateToHome = () => {
+    window.location.hash = '';
+    setCurrentView('home');
+  };
+
   return (
     <div className="relative min-h-screen bg-[#0a0a0a] text-[#ededed] selection:bg-zinc-800 selection:text-zinc-100 font-sans">
       {/* Interactive Flipping Card Deck Background */}
       <CardDeckBackground />
 
-      {/* Main Centered Content */}
+      {/* Main Content Container */}
       <main
         id="portfolio-content"
-        className="relative z-10 max-w-[580px] mx-auto px-6 py-16 md:py-24 space-y-12 md:space-y-14"
+        className={`relative z-10 mx-auto px-6 py-16 md:py-24 transition-all duration-300 ${
+          currentView === 'causal-measurement' ? 'max-w-[760px]' : 'max-w-[580px] space-y-12 md:space-y-14'
+        }`}
       >
-        {/* Header Section */}
-        <Header profile={profile} />
+        {currentView === 'home' ? (
+          <>
+            {/* Header Section */}
+            <Header profile={profile} />
 
-        {/* Experience Section */}
-        <Experience items={profile.experience} />
+            {/* Writing & Case Studies Section */}
+            <WritingSection onSelectArticle={navigateToArticle} />
 
-        {/* Focus / Competencies Section */}
-        <Focus items={profile.focus} />
+            {/* Experience Section */}
+            <Experience items={profile.experience} />
 
-        {/* Education & Recognition Section */}
-        <Education items={profile.education} />
+            {/* Focus / Competencies Section */}
+            <Focus items={profile.focus} />
 
-        {/* Footer / Connect Section */}
-        <Connect links={profile.links} />
+            {/* Education & Recognition Section */}
+            <Education items={profile.education} />
+
+            {/* Footer / Connect Section */}
+            <Connect links={profile.links} />
+          </>
+        ) : (
+          /* Case Study View */
+          <CausalMeasurementEssay onBack={navigateToHome} />
+        )}
       </main>
     </div>
   );
