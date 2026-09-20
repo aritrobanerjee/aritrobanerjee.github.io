@@ -137,11 +137,13 @@ function isDateOrRightSide(str) {
   return false;
 }
 
-export function markdownToDocxBody(markdown) {
+export function markdownToDocxBody(markdown, options = {}) {
+  const isOnePage = options.pages !== 2;
   const lines = markdown.split('\n');
   let bodyXml = '';
-  // 12240 width - 2 * 720 margin = 10800 twips (7.5 in)
-  const rightTabPos = 10800;
+  // 12240 width - 2 * margin twips
+  const marginTwips = isOnePage ? 720 : 864;
+  const rightTabPos = 12240 - (2 * marginTwips);
 
   for (let i = 0; i < lines.length; i++) {
     const rawLine = lines[i].trim();
@@ -154,27 +156,33 @@ export function markdownToDocxBody(markdown) {
     // Name (Header 1)
     if (rawLine.startsWith('# ')) {
       const title = rawLine.substring(2).trim();
-      bodyXml += `<w:p><w:pPr><w:jc w:val="center"/><w:spacing w:before="0" w:after="40" w:line="240" w:lineRule="auto"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman" w:cs="Times New Roman"/><w:b/><w:sz w:val="32"/><w:szCs w:val="32"/><w:color w:val="000000"/></w:rPr><w:t>${escapeXml(title)}</w:t></w:r></w:p>`;
+      const afterSpace = isOnePage ? 40 : 80;
+      bodyXml += `<w:p><w:pPr><w:jc w:val="center"/><w:spacing w:before="0" w:after="${afterSpace}" w:line="240" w:lineRule="auto"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman" w:cs="Times New Roman"/><w:b/><w:sz w:val="32"/><w:szCs w:val="32"/><w:color w:val="000000"/></w:rPr><w:t>${escapeXml(title)}</w:t></w:r></w:p>`;
       continue;
     }
 
     // Contact line
     if (rawLine.includes('|') && (rawLine.includes('@') || rawLine.includes('linkedin.com') || rawLine.includes('github.io'))) {
-      bodyXml += `<w:p><w:pPr><w:jc w:val="center"/><w:spacing w:before="0" w:after="160" w:line="240" w:lineRule="auto"/></w:pPr>${parseRunsXml(rawLine, 19)}</w:p>`;
+      const afterSpace = isOnePage ? 160 : 220;
+      bodyXml += `<w:p><w:pPr><w:jc w:val="center"/><w:spacing w:before="0" w:after="${afterSpace}" w:line="240" w:lineRule="auto"/></w:pPr>${parseRunsXml(rawLine, 19)}</w:p>`;
       continue;
     }
 
     // Section Headings (## EXPERIENCE, ## EDUCATION, etc.)
     if (rawLine.startsWith('## ')) {
       const section = rawLine.substring(3).trim().toUpperCase();
-      bodyXml += `<w:p><w:pPr><w:pBdr><w:bottom w:val="single" w:sz="10" w:space="2" w:color="000000"/></w:pBdr><w:spacing w:before="180" w:after="50" w:line="240" w:lineRule="auto"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman" w:cs="Times New Roman"/><w:b/><w:sz w:val="22"/><w:szCs w:val="22"/><w:color w:val="000000"/></w:rPr><w:t>${escapeXml(section)}</w:t></w:r></w:p>`;
+      const beforeSpace = isOnePage ? 180 : 240;
+      const afterSpace = isOnePage ? 50 : 80;
+      bodyXml += `<w:p><w:pPr><w:pBdr><w:bottom w:val="single" w:sz="10" w:space="2" w:color="000000"/></w:pBdr><w:spacing w:before="${beforeSpace}" w:after="${afterSpace}" w:line="240" w:lineRule="auto"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman" w:cs="Times New Roman"/><w:b/><w:sz w:val="22"/><w:szCs w:val="22"/><w:color w:val="000000"/></w:rPr><w:t>${escapeXml(section)}</w:t></w:r></w:p>`;
       continue;
     }
 
     // Bullet points (* or -)
     if (rawLine.startsWith('* ') || rawLine.startsWith('- ')) {
       const bulletText = rawLine.substring(2).trim();
-      bodyXml += `<w:p><w:pPr><w:ind w:left="400" w:hanging="200"/><w:spacing w:before="20" w:after="30" w:line="235" w:lineRule="auto"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman" w:cs="Times New Roman"/><w:sz w:val="20"/><w:szCs w:val="20"/></w:rPr><w:t xml:space="preserve">• </w:t></w:r>${parseRunsXml(bulletText, 20)}</w:p>`;
+      const beforeSpace = isOnePage ? 20 : 30;
+      const afterSpace = isOnePage ? 30 : 45;
+      bodyXml += `<w:p><w:pPr><w:ind w:left="400" w:hanging="200"/><w:spacing w:before="${beforeSpace}" w:after="${afterSpace}" w:line="235" w:lineRule="auto"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman" w:cs="Times New Roman"/><w:sz w:val="20"/><w:szCs w:val="20"/></w:rPr><w:t xml:space="preserve">• </w:t></w:r>${parseRunsXml(bulletText, 20)}</w:p>`;
       continue;
     }
 
@@ -184,19 +192,26 @@ export function markdownToDocxBody(markdown) {
       if (pipeParts.length === 2 && (isDateOrRightSide(pipeParts[1]) || pipeParts[0].includes('**') || pipeParts[0].includes('*'))) {
         const leftSide = pipeParts[0];
         const rightSide = pipeParts[1];
+        const beforeSpace = isOnePage ? 60 : 90;
+        const afterSpace = isOnePage ? 25 : 40;
 
-        bodyXml += `<w:p><w:pPr><w:tabs><w:tab w:val="right" w:leader="none" w:pos="${rightTabPos}"/></w:tabs><w:spacing w:before="60" w:after="25" w:line="240" w:lineRule="auto"/></w:pPr>${parseRunsXml(leftSide, 20)}<w:r><w:tab/></w:r>${parseRunsXml(rightSide, 20)}</w:p>`;
+        bodyXml += `<w:p><w:pPr><w:tabs><w:tab w:val="right" w:leader="none" w:pos="${rightTabPos}"/></w:tabs><w:spacing w:before="${beforeSpace}" w:after="${afterSpace}" w:line="240" w:lineRule="auto"/></w:pPr>${parseRunsXml(leftSide, 20)}<w:r><w:tab/></w:r>${parseRunsXml(rightSide, 20)}</w:p>`;
         continue;
       }
     }
 
-    bodyXml += `<w:p><w:pPr><w:spacing w:before="40" w:after="20" w:line="240" w:lineRule="auto"/></w:pPr>${parseRunsXml(rawLine, 20)}</w:p>`;
+    const beforeSpace = isOnePage ? 40 : 60;
+    const afterSpace = isOnePage ? 20 : 30;
+    bodyXml += `<w:p><w:pPr><w:spacing w:before="${beforeSpace}" w:after="${afterSpace}" w:line="240" w:lineRule="auto"/></w:pPr>${parseRunsXml(rawLine, 20)}</w:p>`;
   }
 
   return bodyXml;
 }
 
-export function buildDocxBuffer(markdown) {
+export function buildDocxBuffer(markdown, options = {}) {
+  const isOnePage = options.pages !== 2;
+  const marginTwips = isOnePage ? 720 : 864;
+
   const contentTypesXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
   <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
@@ -234,16 +249,15 @@ export function buildDocxBuffer(markdown) {
   </w:docDefaults>
 </w:styles>`;
 
-  const bodyXml = markdownToDocxBody(markdown);
+  const bodyXml = markdownToDocxBody(markdown, options);
 
-  // 0.5 in margins = 720 twips
   const documentXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
   <w:body>
     ${bodyXml}
     <w:sectPr>
       <w:pgSz w:w="12240" w:h="15840"/>
-      <w:pgMar w:top="720" w:right="720" w:bottom="720" w:left="720" w:header="360" w:footer="360" w:gutter="0"/>
+      <w:pgMar w:top="${marginTwips}" w:right="${marginTwips}" w:bottom="${marginTwips}" w:left="${marginTwips}" w:header="360" w:footer="360" w:gutter="0"/>
       <w:cols w:space="720"/>
     </w:sectPr>
   </w:body>
