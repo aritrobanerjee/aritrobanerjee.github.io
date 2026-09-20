@@ -62,8 +62,8 @@ export const App: React.FC = () => {
         id="portfolio-content"
         className="relative z-10 mx-auto px-6 py-16 md:py-24 xl:py-28 max-w-[720px] lg:max-w-[960px] xl:max-w-[1040px] space-y-12 md:space-y-14"
       >
-        {/* Header Section (Persistent on both Home and Essay views) */}
-        <Header profile={profile} />
+        {/* Header Section (Persistent on both Home and Essay views, bio hidden on essay) */}
+        <Header profile={profile} showBio={currentView === 'home'} />
 
         {currentView === 'home' ? (
           <>

@@ -3,11 +3,12 @@ import { ProfileData } from '../types/profile';
 
 interface HeaderProps {
   profile: ProfileData;
+  showBio?: boolean;
 }
 
-export const Header: React.FC<HeaderProps> = ({ profile }) => {
+export const Header: React.FC<HeaderProps> = ({ profile, showBio = true }) => {
   return (
-    <header className="space-y-5">
+    <header className={showBio ? "space-y-5" : ""}>
       <div className="flex items-start justify-between gap-4">
         <div className="flex items-center gap-3.5">
           <div className="relative shrink-0 group">
@@ -44,9 +45,11 @@ export const Header: React.FC<HeaderProps> = ({ profile }) => {
         )}
       </div>
 
-      <p className="text-[14px] leading-[1.7] text-[#a1a1aa]">
-        {profile.bio}
-      </p>
+      {showBio && (
+        <p className="text-[14px] leading-[1.7] text-[#a1a1aa]">
+          {profile.bio}
+        </p>
+      )}
     </header>
   );
 };
