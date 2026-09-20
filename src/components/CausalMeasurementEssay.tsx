@@ -173,13 +173,8 @@ export const CausalMeasurementEssay: React.FC<CausalMeasurementEssayProps> = ({ 
 
       {/* Footer / Copyright & Provenance */}
       <footer className="border-t border-[#18181b] pt-8 space-y-5 mt-14">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-[11.5px] font-mono text-[#82828b]">
-          <div>
-            © {new Date().getFullYear()} Aritro Banerjee. All rights reserved.
-          </div>
-          <div className="text-[11px] text-[#71717a]">
-            First published at <span className="text-[#82828b]">aritrobanerjee.github.io</span>
-          </div>
+        <div className="text-[11.5px] font-mono text-[#82828b]">
+          © {new Date().getFullYear()} Aritro Banerjee. All rights reserved.
         </div>
 
         <div className="flex items-center justify-between text-xs font-mono text-[#8e8e93] pt-2">
