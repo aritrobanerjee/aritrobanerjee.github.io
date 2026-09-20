@@ -103,7 +103,7 @@
           "publisher": {
             "@id": "https://aritrobanerjee.github.io/#person"
           },
-          "url": "https://aritrobanerjee.github.io/#/writing/causal-measurement",
+          "url": "https://aritrobanerjee.github.io/writing/causal-measurement",
           "inLanguage": "en-US",
           "copyrightHolder": {
             "@id": "https://aritrobanerjee.github.io/#person"
@@ -128,6 +128,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Geist:wght@400;450;500;600&family=Inter:wght@400;450;500;600&display=swap" rel="stylesheet">
     
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>" />
+
+    <!-- GitHub Pages SPA Redirect Decoder (restores clean URL if 404 redirected) -->
+    <script type="text/javascript">
+      (function(l) {
+        if (l.search[1] === 'p') {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&') 
+          }).reduce(function(acc, curr) {
+            var parts = curr.split('=');
+            acc[parts[0]] = parts[1];
+            return acc;
+          }, {});
+          if (decoded.p) {
+            window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + (decoded.p.startsWith('/') ? decoded.p : '/' + decoded.p) +
+              (decoded.q ? '?' + decoded.q : '') +
+              l.hash
+            );
+          }
+        }
+      }(window.location))
+    </script>
   </head>
   <body class="bg-[#0a0a0a] text-[#ededed] min-h-screen antialiased selection:bg-zinc-800 selection:text-zinc-100">
     <div id="root"></div>

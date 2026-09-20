@@ -16,30 +16,40 @@ export const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<'home' | 'causal-measurement'>('home');
 
   useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash;
-      if (hash === '#/writing/causal-measurement' || hash === '#causal-measurement') {
+    const handleLocationChange = () => {
+      // Clean up legacy hash routing if a user visits an old bookmarked hash link
+      if (window.location.hash.includes('causal-measurement')) {
+        window.history.replaceState(null, '', '/writing/causal-measurement');
+        setCurrentView('causal-measurement');
+        return;
+      }
+
+      // Check URL pathname (strip trailing slashes)
+      const path = window.location.pathname.replace(/\/$/, '');
+      if (path === '/writing/causal-measurement') {
         setCurrentView('causal-measurement');
       } else {
         setCurrentView('home');
       }
     };
 
-    handleHashChange();
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    handleLocationChange();
+    window.addEventListener('popstate', handleLocationChange);
+    return () => window.removeEventListener('popstate', handleLocationChange);
   }, []);
 
   const navigateToArticle = (articleId: string) => {
     if (articleId === 'causal-measurement') {
-      window.location.hash = '#/writing/causal-measurement';
+      window.history.pushState(null, '', '/writing/causal-measurement');
       setCurrentView('causal-measurement');
+      window.scrollTo(0, 0);
     }
   };
 
   const navigateToHome = () => {
-    window.location.hash = '';
+    window.history.pushState(null, '', '/');
     setCurrentView('home');
+    window.scrollTo(0, 0);
   };
 
   return (
