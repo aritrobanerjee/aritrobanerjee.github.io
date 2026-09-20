@@ -31,9 +31,22 @@ export const CausalMeasurementEssay: React.FC<CausalMeasurementEssayProps> = ({ 
           remarkPlugins={[remarkGfm]}
           components={{
             h1: ({ children }) => (
-              <h1 className="text-2xl md:text-4xl font-semibold tracking-tight text-white leading-tight mt-0 mb-3">
-                {children}
-              </h1>
+              <div className="flex items-start gap-3.5 md:gap-4 mt-0 mb-4">
+                <div className="w-9 h-9 md:w-11 md:h-11 rounded-full bg-[#121214] border border-[#27272a] flex items-center justify-center shrink-0 mt-0.5 md:mt-1">
+                  <svg
+                    viewBox="0 0 10 10"
+                    className="w-4 h-4 md:w-5 md:h-5 fill-current text-[#ededed]"
+                    style={{ shapeRendering: 'crispEdges' }}
+                  >
+                    <rect x="1" y="5" width="2" height="3" />
+                    <rect x="4" y="2" width="2" height="6" />
+                    <rect x="7" y="5" width="2" height="3" />
+                  </svg>
+                </div>
+                <h1 className="text-2xl md:text-4xl font-semibold tracking-tight text-white leading-tight">
+                  {children}
+                </h1>
+              </div>
             ),
             h2: ({ children }) => (
               <h2 className="text-xl md:text-2xl font-semibold text-white tracking-tight pt-8 border-t border-[#1c1c20] mt-8 mb-4">
