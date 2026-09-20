@@ -4,9 +4,11 @@ import { LinkItem } from '../types/profile';
 interface ConnectProps {
   links: LinkItem[];
   onBack?: () => void;
+  name?: string;
+  disclaimer?: string;
 }
 
-export const Connect: React.FC<ConnectProps> = ({ links, onBack }) => {
+export const Connect: React.FC<ConnectProps> = ({ links, onBack, name, disclaimer }) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopyEmail = (emailStr: string) => {
@@ -58,7 +60,7 @@ export const Connect: React.FC<ConnectProps> = ({ links, onBack }) => {
 
       <div className="pt-4 border-t border-[#18181b]/60 space-y-2.5">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11.5px] font-mono text-[#82828b]">
-          <span>© {new Date().getFullYear()} Aritro Banerjee. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} {name || 'Aritro Banerjee'}. All rights reserved.</span>
           {onBack && (
             <div className="flex items-center gap-4 text-xs font-mono text-[#8e8e93]">
               <button
@@ -77,7 +79,7 @@ export const Connect: React.FC<ConnectProps> = ({ links, onBack }) => {
           )}
         </div>
         <p className="text-[10.5px] font-mono text-[#71717a] leading-relaxed">
-          Disclaimer: Views and opinions expressed across this site are strictly my own and do not represent or reflect those of my employer or any affiliated organizations.
+          {disclaimer || "Disclaimer: Views and opinions expressed across this site are strictly my own and do not represent or reflect those of my employer or any affiliated organizations."}
         </p>
       </div>
     </footer>

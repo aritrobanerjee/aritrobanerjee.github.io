@@ -1,0 +1,6 @@
+credentials.json
+service-account.json
+token.json
+.credentials/
+dist/
+temp*

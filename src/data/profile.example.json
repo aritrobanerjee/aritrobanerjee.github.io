@@ -1,0 +1,101 @@
+{
+  "name": "Alex Mercer",
+  "pronouns": "they/them",
+  "title": "Staff Software Engineer",
+  "company": "Acme Corp",
+  "location": "San Francisco, CA",
+  "availableForWork": false,
+  "statusText": "San Francisco, CA · Acme Corp",
+  "bio": "Focused on building reliable distributed systems, developer platforms, and high-performance infrastructure. Passionate about developer productivity and open source tooling.",
+  "experience": [
+    {
+      "id": "acme",
+      "company": "Acme Corp",
+      "period": "2022 - Present",
+      "location": "San Francisco, CA",
+      "roles": [
+        {
+          "title": "Staff Engineer, Cloud Platform",
+          "period": "2024 - Present",
+          "summary": "Technical lead for foundational service mesh and cloud edge infrastructure.",
+          "details": [
+            "Architected multi-region failover cluster reducing P99 latency by 40%.",
+            "Mentored engineering teams across platform and observability pillars."
+          ],
+          "current": true
+        },
+        {
+          "title": "Senior Software Engineer",
+          "period": "2022 - 2024",
+          "summary": "Designed high-throughput event processing pipelines and developer APIs.",
+          "details": [
+            "Engineered event-driven microservices handling 250k RPS.",
+            "Reduced cloud infrastructure costs by 22% via autoscaling optimizations."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "initech",
+      "company": "Initech Systems",
+      "period": "2019 - 2022",
+      "location": "Seattle, WA",
+      "roles": [
+        {
+          "title": "Software Engineer",
+          "period": "2019 - 2022",
+          "summary": "Full-stack development for enterprise cloud analytics and workflows.",
+          "details": [
+            "Developed responsive web dashboards using React and TypeScript.",
+            "Built automated CI/CD deployment pipelines."
+          ]
+        }
+      ]
+    }
+  ],
+  "focus": [
+    {
+      "label": "distributed systems",
+      "description": "High-throughput microservices, event streaming, and cloud-native architecture."
+    },
+    {
+      "label": "developer platforms",
+      "description": "Modern tooling, CI/CD automation, and developer ergonomics."
+    },
+    {
+      "label": "reliability",
+      "description": "SRE best practices, observability, and latency optimization."
+    }
+  ],
+  "education": [
+    {
+      "institution": "University of Washington",
+      "degree": "Bachelor of Science (B.S.), Computer Science",
+      "field": "Systems and Software Engineering",
+      "period": "2015 - 2019",
+      "gpa": "3.90 / 4.00",
+      "category": "degree",
+      "details": "Dean's Honor List · ACM Student Chapter Lead"
+    }
+  ],
+  "links": [
+    {
+      "label": "github",
+      "url": "https://github.com",
+      "handle": "@yourhandle",
+      "isExternal": true
+    },
+    {
+      "label": "linkedin",
+      "url": "https://linkedin.com",
+      "handle": "in/yourhandle",
+      "isExternal": true
+    },
+    {
+      "label": "email",
+      "url": "mailto:youremail@example.com",
+      "handle": "youremail [at] example.com",
+      "isExternal": false
+    }
+  ]
+}

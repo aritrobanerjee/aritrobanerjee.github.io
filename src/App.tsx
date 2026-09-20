@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import profileData from './data/profile.json';
 import { ProfileData } from './types/profile';
+import { projects } from './data/projects';
 import { Header } from './components/Header';
 import { Experience } from './components/Experience';
 import { Focus } from './components/Focus';
@@ -8,51 +9,40 @@ import { Education } from './components/Education';
 import { Connect } from './components/Connect';
 import { CardDeckBackground } from './components/CardDeckBackground';
 import { WritingSection } from './components/WritingSection';
-import { CausalMeasurementEssay } from './components/CausalMeasurementEssay';
-import { DesignEssay } from './components/DesignEssay';
-import { BuildEssay } from './components/BuildEssay';
+import { EssayReader } from './components/EssayReader';
 
 const profile: ProfileData = profileData as ProfileData;
 
-type ViewState =
-  | 'home'
-  | 'causal-measurement'
-  | 'design-what-cant-be-imagined'
-  | 'build-what-cant-be-defined';
-
 export const App: React.FC = () => {
-  const [currentView, setCurrentView] = useState<ViewState>('home');
+  const [activeSlug, setActiveSlug] = useState<string | null>(null);
 
   useEffect(() => {
     const handleLocationChange = () => {
-      // Clean up legacy hash routing if a user visits an old bookmarked hash link
-      if (window.location.hash.includes('causal-measurement')) {
-        window.history.replaceState(null, '', '/writing/causal-measurement');
-        setCurrentView('causal-measurement');
-        return;
-      }
-      if (window.location.hash.includes('design-what-cant-be-imagined')) {
-        window.history.replaceState(null, '', '/writing/design-what-cant-be-imagined');
-        setCurrentView('design-what-cant-be-imagined');
-        return;
-      }
-      if (window.location.hash.includes('build-what-cant-be-defined')) {
-        window.history.replaceState(null, '', '/writing/build-what-cant-be-defined');
-        setCurrentView('build-what-cant-be-defined');
-        return;
+      // 1. Clean up legacy hash routing if a user visits an old bookmarked hash link
+      const hash = window.location.hash.replace(/^#/, '');
+      if (hash) {
+        const matchingProject = projects.find(
+          (p) => hash.includes(p.slug) || hash.includes(p.id)
+        );
+        if (matchingProject) {
+          window.history.replaceState(null, '', `/writing/${matchingProject.slug}`);
+          setActiveSlug(matchingProject.slug);
+          return;
+        }
       }
 
-      // Check URL pathname (strip trailing slashes)
+      // 2. Check URL pathname (strip trailing slashes)
       const path = window.location.pathname.replace(/\/$/, '');
-      if (path === '/writing/causal-measurement') {
-        setCurrentView('causal-measurement');
-      } else if (path === '/writing/design-what-cant-be-imagined') {
-        setCurrentView('design-what-cant-be-imagined');
-      } else if (path === '/writing/build-what-cant-be-defined') {
-        setCurrentView('build-what-cant-be-defined');
-      } else {
-        setCurrentView('home');
+      if (path.startsWith('/writing/')) {
+        const slug = path.replace('/writing/', '');
+        const matchingProject = projects.find((p) => p.slug === slug);
+        if (matchingProject) {
+          setActiveSlug(matchingProject.slug);
+          return;
+        }
       }
+
+      setActiveSlug(null);
     };
 
     handleLocationChange();
@@ -61,26 +51,23 @@ export const App: React.FC = () => {
   }, []);
 
   const navigateToArticle = (articleId: string) => {
-    if (articleId === 'causal-measurement') {
-      window.history.pushState(null, '', '/writing/causal-measurement');
-      setCurrentView('causal-measurement');
-      window.scrollTo(0, 0);
-    } else if (articleId === 'design-what-cant-be-imagined') {
-      window.history.pushState(null, '', '/writing/design-what-cant-be-imagined');
-      setCurrentView('design-what-cant-be-imagined');
-      window.scrollTo(0, 0);
-    } else if (articleId === 'build-what-cant-be-defined') {
-      window.history.pushState(null, '', '/writing/build-what-cant-be-defined');
-      setCurrentView('build-what-cant-be-defined');
+    const project = projects.find((p) => p.slug === articleId || p.id === articleId);
+    if (project) {
+      window.history.pushState(null, '', `/writing/${project.slug}`);
+      setActiveSlug(project.slug);
       window.scrollTo(0, 0);
     }
   };
 
   const navigateToHome = () => {
     window.history.pushState(null, '', '/');
-    setCurrentView('home');
+    setActiveSlug(null);
     window.scrollTo(0, 0);
   };
+
+  const activeProject = activeSlug
+    ? projects.find((p) => p.slug === activeSlug)
+    : null;
 
   return (
     <div className="relative min-h-screen bg-[#0a0a0a] text-[#ededed] selection:bg-zinc-800 selection:text-zinc-100 font-sans">
@@ -93,9 +80,9 @@ export const App: React.FC = () => {
         className="relative z-10 mx-auto px-6 py-16 md:py-24 xl:py-28 max-w-[720px] lg:max-w-[960px] xl:max-w-[1040px] space-y-12 md:space-y-14"
       >
         {/* Header Section (Persistent on both Home and Essay views, bio hidden on essay) */}
-        <Header profile={profile} showBio={currentView === 'home'} />
+        <Header profile={profile} showBio={!activeProject} />
 
-        {currentView === 'home' && (
+        {!activeProject && (
           <>
             {/* Writing & Case Studies Section */}
             <WritingSection onSelectArticle={navigateToArticle} />
@@ -110,20 +97,20 @@ export const App: React.FC = () => {
             <Education items={profile.education} />
 
             {/* Footer / Connect Section */}
-            <Connect links={profile.links} />
+            <Connect
+              links={profile.links}
+              name={profile.name}
+              disclaimer={profile.disclaimer}
+            />
           </>
         )}
 
-        {currentView === 'causal-measurement' && (
-          <CausalMeasurementEssay onBack={navigateToHome} />
-        )}
-
-        {currentView === 'design-what-cant-be-imagined' && (
-          <DesignEssay onBack={navigateToHome} />
-        )}
-
-        {currentView === 'build-what-cant-be-defined' && (
-          <BuildEssay onBack={navigateToHome} />
+        {activeProject && (
+          <EssayReader
+            markdown={activeProject.markdown}
+            icon={activeProject.icon}
+            onBack={navigateToHome}
+          />
         )}
       </main>
     </div>

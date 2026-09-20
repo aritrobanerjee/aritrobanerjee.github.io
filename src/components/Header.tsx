@@ -13,7 +13,7 @@ export const Header: React.FC<HeaderProps> = ({ profile, showBio = true }) => {
         <div className="flex items-center gap-3.5">
           <div className="relative shrink-0 group">
             <img
-              src="/avatar.jpg"
+              src={profile.avatarUrl || "/avatar.jpg"}
               alt={profile.name}
               className="w-12 h-12 rounded-full object-cover grayscale contrast-[1.08] brightness-[0.96] border border-[#27272a] bg-[#121214] transition-all duration-300 group-hover:border-[#3f3f46] group-hover:brightness-105"
             />
@@ -40,7 +40,7 @@ export const Header: React.FC<HeaderProps> = ({ profile, showBio = true }) => {
                 }}
               ></span>
             </span>
-            <span>Austin, TX</span>
+            <span>{profile.location}</span>
           </div>
         )}
       </div>

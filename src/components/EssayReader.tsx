@@ -72,7 +72,9 @@ export const EssayReader: React.FC<EssayReaderProps> = ({ markdown, icon, onBack
             h1: ({ children }) => (
               <div className="flex items-start gap-3.5 md:gap-4 mt-0 mb-4">
                 <div className="w-9 h-9 md:w-11 md:h-11 rounded-full bg-[#121214] border border-[#27272a] flex items-center justify-center shrink-0 mt-0.5 md:mt-1">
-                  {icon}
+                  <div className="w-4 h-4 md:w-5 md:h-5 text-[#ededed] flex items-center justify-center">
+                    {icon}
+                  </div>
                 </div>
                 <h1 className="text-2xl md:text-4xl font-semibold tracking-tight text-white leading-tight">
                   {children}
@@ -168,7 +170,12 @@ export const EssayReader: React.FC<EssayReaderProps> = ({ markdown, icon, onBack
 
       {/* Connect & Footer */}
       <div className="mt-14">
-        <Connect links={profileData.links} onBack={onBack} />
+        <Connect
+          links={profileData.links}
+          onBack={onBack}
+          name={profileData.name}
+          disclaimer={(profileData as any).disclaimer}
+        />
       </div>
     </article>
   );
