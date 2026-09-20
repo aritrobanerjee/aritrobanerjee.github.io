@@ -56,24 +56,29 @@ export const Connect: React.FC<ConnectProps> = ({ links, onBack }) => {
         </div>
       </div>
 
-      <div className="pt-4 border-t border-[#18181b]/60 flex items-center justify-between text-[11.5px] font-mono text-[#82828b]">
-        <span>© {new Date().getFullYear()} Aritro Banerjee. All rights reserved.</span>
-        {onBack && (
-          <div className="flex items-center gap-4 text-xs font-mono text-[#8e8e93]">
-            <button
-              onClick={onBack}
-              className="hover:text-white transition-colors"
-            >
-              ← Back
-            </button>
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="hover:text-white transition-colors"
-            >
-              ↑ Back to top
-            </button>
-          </div>
-        )}
+      <div className="pt-4 border-t border-[#18181b]/60 space-y-2.5">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11.5px] font-mono text-[#82828b]">
+          <span>© {new Date().getFullYear()} Aritro Banerjee. All rights reserved.</span>
+          {onBack && (
+            <div className="flex items-center gap-4 text-xs font-mono text-[#8e8e93]">
+              <button
+                onClick={onBack}
+                className="hover:text-white transition-colors"
+              >
+                ← Back
+              </button>
+              <button
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="hover:text-white transition-colors"
+              >
+                ↑ Back to top
+              </button>
+            </div>
+          )}
+        </div>
+        <p className="text-[10.5px] font-mono text-[#71717a] leading-relaxed">
+          Disclaimer: Views and opinions expressed across this site are strictly my own and do not represent or reflect those of my employer or any affiliated organizations.
+        </p>
       </div>
     </footer>
   );
