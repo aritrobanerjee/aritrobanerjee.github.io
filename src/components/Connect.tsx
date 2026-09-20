@@ -54,6 +54,10 @@ export const Connect: React.FC<ConnectProps> = ({ links }) => {
           </div>
         </div>
       </div>
+
+      <div className="pt-4 border-t border-[#18181b]/60 flex items-center justify-between text-[11.5px] font-mono text-[#52525b]">
+        <span>© {new Date().getFullYear()} Aritro Banerjee. All rights reserved.</span>
+      </div>
     </footer>
   );
 };
