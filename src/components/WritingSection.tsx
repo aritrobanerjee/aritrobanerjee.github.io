@@ -7,11 +7,10 @@ interface WritingSectionProps {
 export const WritingSection: React.FC<WritingSectionProps> = ({ onSelectArticle }) => {
   return (
     <section className="space-y-6">
-      <div className="border-b border-[#18181b] pb-2 flex items-center justify-between">
+      <div className="border-b border-[#18181b] pb-2">
         <h2 className="text-[11px] font-mono uppercase tracking-[0.15em] text-[#52525b]">
-          Writing & Artifacts
+          Writing
         </h2>
-        <span className="text-[10px] font-mono text-[#52525b]">01</span>
       </div>
 
       <div className="space-y-4">
@@ -26,7 +25,7 @@ export const WritingSection: React.FC<WritingSectionProps> = ({ onSelectArticle 
                 <span className="text-[11px] text-[#71717a] group-hover:translate-x-0.5 transition-transform">→</span>
               </h3>
               <p className="text-[11.5px] font-mono text-[#52525b]">
-                March 2026 · 12 min read · Causal Inference
+                March 2026 · 12 min read
               </p>
             </div>
           </div>

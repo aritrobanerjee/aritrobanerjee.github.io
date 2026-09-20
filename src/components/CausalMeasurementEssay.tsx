@@ -15,17 +15,14 @@ export const CausalMeasurementEssay: React.FC<CausalMeasurementEssayProps> = ({ 
   return (
     <article className="space-y-10">
       {/* Top Navigation */}
-      <nav className="flex items-center justify-between border-b border-[#18181b] pb-4">
+      <nav className="flex items-center justify-between border-b border-[#18181b] pb-3">
         <button
           onClick={onBack}
-          className="group flex items-center gap-2 text-[12.5px] font-mono text-[#71717a] hover:text-white transition-colors"
+          className="group flex items-center gap-1.5 text-[12px] font-mono text-[#71717a] hover:text-white transition-colors"
         >
           <span className="transition-transform group-hover:-translate-x-0.5">←</span>
-          <span>Aritro Banerjee</span>
+          <span>Writing</span>
         </button>
-        <span className="text-[11.5px] font-mono text-[#52525b]">
-          Essay
-        </span>
       </nav>
 
       {/* Markdown Content Renderer */}
@@ -141,7 +138,7 @@ export const CausalMeasurementEssay: React.FC<CausalMeasurementEssayProps> = ({ 
             onClick={onBack}
             className="hover:text-white transition-colors"
           >
-            ← Return to portfolio
+            ← Writing
           </button>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
