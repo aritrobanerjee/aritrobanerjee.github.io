@@ -21,7 +21,7 @@ export const Focus: React.FC<FocusProps> = ({ items }) => {
             className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 text-[13px]"
           >
             {/* Monospace Key Label */}
-            <div className="w-full sm:w-[125px] shrink-0 font-mono text-[12.5px] text-[#82828b]">
+            <div className="w-full sm:w-[150px] shrink-0 font-mono text-[12.5px] text-[#82828b]">
               {item.label}
             </div>
 

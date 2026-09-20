@@ -123,15 +123,15 @@
   "focus": [
     {
       "label": "platforms",
-      "description": "developer-facing APIs & SDKs, platform architecture, global ecosystem scaling"
+      "description": "Developer SDKs, backward-compatible runtime APIs, and platform primitives across billions of active devices."
     },
     {
-      "label": "commercialization",
-      "description": "global product GTM, product lifecycle, causal impact measurement & telemetry"
+      "label": "causal inference",
+      "description": "Quasi-experimentation (synthetic controls, DiD), counterfactual modeling, and measurement when A/B tests break."
     },
     {
-      "label": "data systems",
-      "description": "enterprise data platforms, big data warehousing, telemetry & pipeline design"
+      "label": "distributed systems",
+      "description": "Enterprise cloud architecture, resilient data pipelines, and graduate-level systems instruction."
     }
   ],
   "education": [
