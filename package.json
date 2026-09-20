@@ -8,7 +8,8 @@
     "build": "tsc && vite build && node scripts/postbuild.js",
     "preview": "vite preview",
     "resume:build": "node resume/export.js",
-    "resume:preview": "node resume/export.js --preview"
+    "resume:preview": "node resume/export.js --preview",
+    "analytics": "node scripts/fetch-analytics.js"
   },
   "dependencies": {
     "clsx": "^2.1.1",
