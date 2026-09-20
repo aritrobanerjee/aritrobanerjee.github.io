@@ -1,7 +1,6 @@
 # How to Measure What Can't Be Tested
 
 *A first-principles guide to causal inference, SUTVA violations, and quasi-experimentation when A/B tests fail in platform ecosystems.*
-*March 2026 · 12 min read*
 
 ## Part I // The Invisible Failure
 
