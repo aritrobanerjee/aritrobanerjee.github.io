@@ -13,7 +13,7 @@ In standard product design, you have visibility. You speak with customers, synth
 
 Then there are systems where visibility completely collapses.
 
-When you design foundational platform primitives—a developer API runtime running across billions of active mobile devices, a distributed storage layer, or an autonomous multi-agent orchestration protocol—you reach a threshold where no human or team can hold the state space in their head.
+When you design foundational platform primitives - a developer API runtime running across billions of active mobile devices, a distributed storage layer, or an autonomous multi-agent orchestration protocol - you reach a threshold where no human or team can hold the state space in their head.
 
 You are forced to make architectural decisions today for:
 * Hardware environments, operating system forks, and device form-factors that do not exist yet.
@@ -66,7 +66,7 @@ Every exposed byte, error code, and method signature in a platform contract is p
 * Design every internal interface as a two-way door, and treat every public contract as radioactive.
 
 ### 04. Design for Observability and Tamper-Evidence
-If you cannot predict how a system will fail, you must design it so that when it breaks, it can explain why. Observability cannot be an afterthought bolted on with dashboards—it must be an intrinsic structural property of the protocol.
+If you cannot predict how a system will fail, you must design it so that when it breaks, it can explain why. Observability cannot be an afterthought bolted on with dashboards - it must be an intrinsic structural property of the protocol.
 
 ---
 

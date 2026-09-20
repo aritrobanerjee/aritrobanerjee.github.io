@@ -11,12 +11,12 @@
     {
       "id": "google",
       "company": "Google",
-      "period": "2021 — Present",
+      "period": "2021 - Present",
       "location": "Austin, TX & Chicago, IL",
       "roles": [
         {
           "title": "Product Manager, Google Play Services",
-          "period": "2026 — Present",
+          "period": "2026 - Present",
           "summary": "Core developer APIs and platform capabilities powering global Android services.",
           "details": [
             "Leading developer-facing platform capabilities and foundational APIs across Android ecosystem.",
@@ -26,7 +26,7 @@
         },
         {
           "title": "Global Product Lead, Google Ads",
-          "period": "2022 — 2026",
+          "period": "2022 - 2026",
           "summary": "Global product go-to-market strategy, commercialization, and causal impact measurement for Ads solutions.",
           "details": [
             "Drove international adoption and commercialization for measurement and ads platforms.",
@@ -35,7 +35,7 @@
         },
         {
           "title": "Technical Account Manager, Google Cloud",
-          "period": "2021 — 2022",
+          "period": "2021 - 2022",
           "summary": "Operational rigor, cloud architecture optimization, and mission-critical customer experience.",
           "details": [
             "Led multi-team technical engagements supporting enterprise cloud migrations and system reliability."
@@ -46,12 +46,12 @@
     {
       "id": "depaul",
       "company": "DePaul University",
-      "period": "2023 — 2025",
+      "period": "2023 - 2025",
       "location": "Chicago, IL",
       "roles": [
         {
           "title": "Lecturer, Enterprise Cloud Computing",
-          "period": "2023 — 2025",
+          "period": "2023 - 2025",
           "summary": "Graduate faculty for MS in Information Systems teaching distributed systems and cloud architecture.",
           "details": [
             "Designed and delivered curriculum on cloud architecture, distributed systems patterns, and production operations.",
@@ -63,12 +63,12 @@
     {
       "id": "deloitte",
       "company": "Deloitte Consulting",
-      "period": "2018 — 2021",
+      "period": "2018 - 2021",
       "location": "Chicago, IL",
       "roles": [
         {
           "title": "Consultant, Data Products",
-          "period": "2019 — 2021",
+          "period": "2019 - 2021",
           "summary": "Strategy and analytics consulting for big data platforms and enterprise data warehousing.",
           "details": [
             "Delivered data warehousing and analytics architectures for Fortune 500 industrial and enterprise clients.",
@@ -105,12 +105,12 @@
     {
       "id": "thorogood",
       "company": "Thorogood Associates",
-      "period": "2015 — 2017",
+      "period": "2015 - 2017",
       "location": "Bengaluru, India",
       "roles": [
         {
           "title": "BI & Analytics Consultant",
-          "period": "2015 — 2017",
+          "period": "2015 - 2017",
           "summary": "End-to-end business intelligence, data architectures, and analytical reporting solutions.",
           "details": [
             "Architected enterprise reporting solutions, ETL data workflows, and multi-dimensional analytics models.",
@@ -139,7 +139,7 @@
       "institution": "Indiana University - Kelley School of Business",
       "degree": "Master of Science (MS), Information Systems",
       "field": "Business Intelligence and Analytics Concentration",
-      "period": "2017 — 2018",
+      "period": "2017 - 2018",
       "gpa": "4.00 / 4.00",
       "category": "degree",
       "details": "President @ Enterprise Systems Club IU · Graduate Teaching Assistant (Case Analysis & IT Strategy, MSIS Core X501)"
@@ -148,7 +148,7 @@
       "institution": "National Institute of Technology Karnataka",
       "degree": "Bachelor of Technology (B.Tech.), Electrical and Electronics Engineering",
       "field": "Electrical & Electronics Engineering",
-      "period": "2011 — 2015",
+      "period": "2011 - 2015",
       "gpa": "3.54 / 4.00",
       "category": "degree",
       "details": "Computer Society of India · Project Renewable Energy Vehicle · Shiksha"
@@ -156,7 +156,7 @@
     {
       "institution": "Indian School Muscat",
       "degree": "CBSE XII Board Exams (AISSCE)",
-      "period": "2009 — 2011",
+      "period": "2009 - 2011",
       "score": "95.2%",
       "category": "achievement",
       "details": "Awarded INSPIRE Scholarship for Higher Education by CBSE and DST for top aggregate performance"

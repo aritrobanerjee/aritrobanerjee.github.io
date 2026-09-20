@@ -26,7 +26,7 @@ So I started digging into how economists handle this, because they've been deali
 
 Why can't we just solve this with bigger datasets, better regressions, or modern AI?
 
-Because of a hard mathematical impossibility theorem. Turing Award winner Judea Pearl proved that causal reasoning is divided into three distinct epistemic tiers—the **Ladder of Causation**:
+Because of a hard mathematical impossibility theorem. Turing Award winner Judea Pearl proved that causal reasoning is divided into three distinct epistemic tiers: the **Ladder of Causation**:
 
 | Tier | Operation & Question | What It Answers | Technical Mechanism |
 | :--- | :--- | :--- | :--- |
