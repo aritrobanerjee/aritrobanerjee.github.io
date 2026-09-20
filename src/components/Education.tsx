@@ -14,7 +14,7 @@ export const Education: React.FC<EducationProps> = ({ items }) => {
   return (
     <section className="space-y-6">
       <div className="border-b border-[#18181b] pb-2">
-        <h2 className="text-[11px] font-mono uppercase tracking-[0.15em] text-[#52525b]">
+        <h2 className="text-[11px] font-mono uppercase tracking-[0.15em] text-[#82828b]">
           Education
         </h2>
       </div>
@@ -30,28 +30,28 @@ export const Education: React.FC<EducationProps> = ({ items }) => {
               <div className="text-[#ededed] font-medium">
                 {item.degree}
                 {item.gpa && (
-                  <span className="text-[12px] font-mono text-[#71717a] font-normal ml-2">
+                  <span className="text-[12px] font-mono text-[#8e8e93] font-normal ml-2">
                     · {item.gpa} GPA
                   </span>
                 )}
               </div>
 
-              <div className="text-[#71717a] text-[13px] mt-0.5">
+              <div className="text-[#8e8e93] text-[13px] mt-0.5">
                 {item.institution}
                 {item.field && (
-                  <span className="text-[#52525b]"> · {item.field}</span>
+                  <span className="text-[#82828b]"> · {item.field}</span>
                 )}
               </div>
 
               {item.details && (
-                <div className="text-[#52525b] text-[12px] mt-1 leading-relaxed">
+                <div className="text-[#8e8e93] text-[12px] mt-1 leading-relaxed">
                   {item.details}
                 </div>
               )}
             </div>
 
             {item.period && (
-              <div className="text-[12.5px] font-mono text-[#52525b] shrink-0 pt-0.5">
+              <div className="text-[12.5px] font-mono text-[#82828b] shrink-0 pt-0.5">
                 {item.period}
               </div>
             )}
@@ -63,10 +63,10 @@ export const Education: React.FC<EducationProps> = ({ items }) => {
           <div className="pt-2">
             <button
               onClick={() => setShowMore((prev) => !prev)}
-              className="flex items-center gap-2 text-[12px] font-mono text-[#52525b] hover:text-[#d4d4d8] transition-colors py-1 select-none group"
+              className="flex items-center gap-2 text-[12px] font-mono text-[#82828b] hover:text-[#d4d4d8] transition-colors py-1 select-none group"
               aria-expanded={showMore}
             >
-              <span className="text-[10px] text-[#3f3f46] group-hover:text-[#71717a] transition-colors">
+              <span className="text-[10px] text-[#52525b] group-hover:text-[#8e8e93] transition-colors">
                 {showMore ? '−' : '+'}
               </span>
               <span>
@@ -85,25 +85,25 @@ export const Education: React.FC<EducationProps> = ({ items }) => {
                       <div className="text-[#d4d4d8] font-medium text-[13px]">
                         {item.degree}
                         {item.score && (
-                          <span className="text-[12px] font-mono text-[#71717a] font-normal ml-2">
+                          <span className="text-[12px] font-mono text-[#8e8e93] font-normal ml-2">
                             · {item.score} Aggregate
                           </span>
                         )}
                       </div>
 
-                      <div className="text-[#71717a] text-[12.5px] mt-0.5">
+                      <div className="text-[#8e8e93] text-[12.5px] mt-0.5">
                         {item.institution}
                       </div>
 
                       {item.details && (
-                        <div className="text-[#52525b] text-[12px] mt-1 leading-relaxed">
+                        <div className="text-[#8e8e93] text-[12px] mt-1 leading-relaxed">
                           {item.details}
                         </div>
                       )}
                     </div>
 
                     {item.period && (
-                      <div className="text-[12px] font-mono text-[#52525b] shrink-0 pt-0.5">
+                      <div className="text-[12px] font-mono text-[#82828b] shrink-0 pt-0.5">
                         {item.period}
                       </div>
                     )}

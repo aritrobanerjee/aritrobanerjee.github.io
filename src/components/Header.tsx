@@ -22,7 +22,7 @@ export const Header: React.FC<HeaderProps> = ({ profile }) => {
             <h1 className="text-[18px] font-medium tracking-tight text-[#ededed]">
               {profile.name}
             </h1>
-            <p className="text-[13px] text-[#71717a] font-mono mt-0.5 tracking-tight">
+            <p className="text-[13px] text-[#8e8e93] font-mono mt-0.5 tracking-tight">
               {profile.title} at {profile.company}
             </p>
           </div>

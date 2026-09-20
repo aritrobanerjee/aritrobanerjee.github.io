@@ -19,7 +19,7 @@ export const Connect: React.FC<ConnectProps> = ({ links }) => {
     <footer className="pt-10 border-t border-[#18181b] space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4">
         <div>
-          <h2 className="text-[11px] font-mono uppercase tracking-[0.15em] text-[#52525b] mb-2.5">
+          <h2 className="text-[11px] font-mono uppercase tracking-[0.15em] text-[#82828b] mb-2.5">
             Connect
           </h2>
           <div className="flex flex-wrap items-center gap-x-3.5 gap-y-2 text-[13.5px]">
@@ -39,7 +39,7 @@ export const Connect: React.FC<ConnectProps> = ({ links }) => {
                     <button
                       onClick={() => handleCopyEmail(link.url)}
                       aria-label="Copy email address"
-                      className="text-[10.5px] font-mono text-[#52525b] hover:text-[#d4d4d8] px-1.5 py-0.2 rounded bg-[#111113] border border-[#222225] transition-colors"
+                      className="text-[10.5px] font-mono text-[#82828b] hover:text-[#d4d4d8] px-1.5 py-0.2 rounded bg-[#111113] border border-[#222225] transition-colors"
                       title="Copy email to clipboard"
                     >
                       {copied ? 'copied!' : 'copy'}
@@ -55,7 +55,7 @@ export const Connect: React.FC<ConnectProps> = ({ links }) => {
         </div>
       </div>
 
-      <div className="pt-4 border-t border-[#18181b]/60 flex items-center justify-between text-[11.5px] font-mono text-[#52525b]">
+      <div className="pt-4 border-t border-[#18181b]/60 flex items-center justify-between text-[11.5px] font-mono text-[#82828b]">
         <span>© {new Date().getFullYear()} Aritro Banerjee. All rights reserved.</span>
       </div>
     </footer>

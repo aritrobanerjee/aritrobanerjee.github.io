@@ -15,7 +15,7 @@ export const Experience: React.FC<ExperienceProps> = ({ items }) => {
   return (
     <section className="space-y-6">
       <div className="border-b border-[#18181b] pb-2">
-        <h2 className="text-[11px] font-mono uppercase tracking-[0.15em] text-[#52525b]">
+        <h2 className="text-[11px] font-mono uppercase tracking-[0.15em] text-[#82828b]">
           Experience
         </h2>
       </div>
@@ -27,7 +27,7 @@ export const Experience: React.FC<ExperienceProps> = ({ items }) => {
             className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 text-[13.5px]"
           >
             {/* Monospace Company Period */}
-            <div className="w-full sm:w-[125px] shrink-0 font-mono text-[12.5px] text-[#52525b] pt-0.5">
+            <div className="w-full sm:w-[125px] shrink-0 font-mono text-[12.5px] text-[#82828b] pt-0.5">
               {company.period}
             </div>
 
@@ -53,21 +53,21 @@ export const Experience: React.FC<ExperienceProps> = ({ items }) => {
                         <div className="text-[13.5px] text-[#d4d4d8] group-hover:text-white transition-colors">
                           <span>{role.title}</span>
                           {company.roles.length > 1 && (
-                            <span className="text-[#52525b] font-mono text-[11.5px] ml-2">
+                            <span className="text-[#82828b] font-mono text-[11.5px] ml-2">
                               {role.period}
                             </span>
                           )}
                         </div>
 
                         {role.details && role.details.length > 0 && (
-                          <span className="text-[10px] font-mono text-[#3f3f46] group-hover:text-[#71717a] transition-colors">
+                          <span className="text-[10px] font-mono text-[#52525b] group-hover:text-[#8e8e93] transition-colors">
                             {isExpanded ? '−' : '+'}
                           </span>
                         )}
                       </div>
 
                       {/* 1-line high impact summary */}
-                      <p className="mt-0.5 text-[13px] leading-relaxed text-[#71717a] group-hover:text-[#8e8e93] transition-colors">
+                      <p className="mt-0.5 text-[13px] leading-relaxed text-[#8e8e93] group-hover:text-[#d4d4d8] transition-colors">
                         {role.summary}
                       </p>
 
@@ -79,7 +79,7 @@ export const Experience: React.FC<ExperienceProps> = ({ items }) => {
                               {role.details.map((detail, dIdx) => (
                                 <li
                                   key={dIdx}
-                                  className="text-[12.5px] text-[#52525b] leading-relaxed"
+                                  className="text-[12.5px] text-[#8e8e93] leading-relaxed"
                                 >
                                   {detail}
                                 </li>

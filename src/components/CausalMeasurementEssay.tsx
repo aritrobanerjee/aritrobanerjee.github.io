@@ -18,10 +18,10 @@ export const CausalMeasurementEssay: React.FC<CausalMeasurementEssayProps> = ({ 
       <nav className="flex items-center justify-between border-b border-[#18181b] pb-3">
         <button
           onClick={onBack}
-          className="group flex items-center gap-1.5 text-[12px] font-mono text-[#71717a] hover:text-white transition-colors"
+          className="group flex items-center gap-1.5 text-[12px] font-mono text-[#8e8e93] hover:text-white transition-colors"
         >
           <span className="transition-transform group-hover:-translate-x-0.5">←</span>
-          <span>Writing</span>
+          <span>Home</span>
         </button>
       </nav>
 
@@ -92,7 +92,7 @@ export const CausalMeasurementEssay: React.FC<CausalMeasurementEssayProps> = ({ 
               </div>
             ),
             thead: ({ children }) => (
-              <thead className="border-b border-[#27272a] bg-[#18181b] text-[#71717a] font-mono text-[10.5px]">
+              <thead className="border-b border-[#27272a] bg-[#18181b] text-[#a1a1aa] font-mono text-[10.5px]">
                 {children}
               </thead>
             ),
@@ -107,7 +107,7 @@ export const CausalMeasurementEssay: React.FC<CausalMeasurementEssayProps> = ({ 
               </tr>
             ),
             th: ({ children }) => (
-              <th className="p-3 font-semibold text-[#71717a]">{children}</th>
+              <th className="p-3 font-semibold text-[#a1a1aa]">{children}</th>
             ),
             td: ({ children }) => (
               <td className="p-3 align-top leading-relaxed">{children}</td>
@@ -116,19 +116,19 @@ export const CausalMeasurementEssay: React.FC<CausalMeasurementEssayProps> = ({ 
               const isBlock = className?.includes('language-');
               if (isBlock) {
                 return (
-                  <pre className="p-4 rounded-xl border border-[#27272a] bg-[#111113] text-[12px] font-mono text-[#d4d4d8] overflow-x-auto leading-relaxed my-4">
+                  <pre className="p-4 rounded-xl border border-[#27272a] bg-[#111113] overflow-x-auto my-4 text-xs font-mono text-[#ededed]">
                     <code>{children}</code>
                   </pre>
                 );
               }
               return (
-                <code className="font-mono text-white font-medium bg-[#18181b] px-1.5 py-0.5 rounded border border-[#27272a] text-[12px]">
+                <code className="text-[12.5px] font-mono text-[#f4f4f5] bg-[#1c1c20] px-1.5 py-0.5 rounded border border-[#27272a]">
                   {children}
                 </code>
               );
             },
             pre: ({ children }) => <>{children}</>,
-            hr: () => <hr className="border-[#1c1c20] my-8" />,
+            hr: () => <hr className="border-[#222225] my-8" />,
           }}
         >
           {essayMarkdown}
@@ -137,21 +137,21 @@ export const CausalMeasurementEssay: React.FC<CausalMeasurementEssayProps> = ({ 
 
       {/* Footer / Copyright & Provenance */}
       <footer className="border-t border-[#18181b] pt-8 space-y-5">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-[11.5px] font-mono text-[#52525b]">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-[11.5px] font-mono text-[#82828b]">
           <div>
             © {new Date().getFullYear()} Aritro Banerjee. All rights reserved.
           </div>
-          <div className="text-[11px] text-[#3f3f46]">
-            First published at <span className="text-[#52525b]">aritrobanerjee.github.io</span>
+          <div className="text-[11px] text-[#71717a]">
+            First published at <span className="text-[#82828b]">aritrobanerjee.github.io</span>
           </div>
         </div>
 
-        <div className="flex items-center justify-between text-xs font-mono text-[#71717a] pt-2">
+        <div className="flex items-center justify-between text-xs font-mono text-[#8e8e93] pt-2">
           <button
             onClick={onBack}
             className="hover:text-white transition-colors"
           >
-            ← Writing
+            ← Home
           </button>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}

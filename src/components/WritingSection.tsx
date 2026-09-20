@@ -8,7 +8,7 @@ export const WritingSection: React.FC<WritingSectionProps> = ({ onSelectArticle 
   return (
     <section className="space-y-6">
       <div className="border-b border-[#18181b] pb-2">
-        <h2 className="text-[11px] font-mono uppercase tracking-[0.15em] text-[#52525b]">
+        <h2 className="text-[11px] font-mono uppercase tracking-[0.15em] text-[#82828b]">
           Writing
         </h2>
       </div>
@@ -22,7 +22,7 @@ export const WritingSection: React.FC<WritingSectionProps> = ({ onSelectArticle 
             <div className="w-6 h-6 rounded-full bg-[#121214] border border-[#222225] flex items-center justify-center shrink-0 group-hover:border-[#383840] group-hover:bg-[#18181c] transition-all duration-200">
               <svg
                 viewBox="0 0 10 10"
-                className="w-2.5 h-2.5 fill-current text-[#71717a] group-hover:text-white transition-colors duration-200"
+                className="w-2.5 h-2.5 fill-current text-[#82828b] group-hover:text-white transition-colors duration-200"
                 style={{ shapeRendering: 'crispEdges' }}
               >
                 <rect x="1" y="5" width="2" height="3" />
