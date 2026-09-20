@@ -21,10 +21,15 @@ if (fs.existsSync(indexPath)) {
     'writing/build-what-cant-be-defined',
   ];
 
+  const faviconPath = path.join(distDir, 'favicon.svg');
+
   routes.forEach((route) => {
     const routeDir = path.join(distDir, route);
     fs.mkdirSync(routeDir, { recursive: true });
     fs.copyFileSync(indexPath, path.join(routeDir, 'index.html'));
+    if (fs.existsSync(faviconPath)) {
+      fs.copyFileSync(faviconPath, path.join(routeDir, 'favicon.svg'));
+    }
     console.log(`✓ Created dist/${route}/index.html for direct HTTP 200 routing`);
   });
 }
