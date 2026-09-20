@@ -50,8 +50,8 @@ export const App: React.FC = () => {
       {/* Main Content Container */}
       <main
         id="portfolio-content"
-        className={`relative z-10 mx-auto px-6 py-16 md:py-24 transition-all duration-300 ${
-          currentView === 'causal-measurement' ? 'max-w-[760px]' : 'max-w-[580px] space-y-12 md:space-y-14'
+        className={`relative z-10 mx-auto px-6 py-16 md:py-24 max-w-[720px] ${
+          currentView === 'home' ? 'space-y-12 md:space-y-14' : ''
         }`}
       >
         {currentView === 'home' ? (
