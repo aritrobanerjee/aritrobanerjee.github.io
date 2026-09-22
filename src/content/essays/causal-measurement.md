@@ -94,14 +94,43 @@ We were trying to detect a +1.5% lift with a test design that was mathematically
 
 ---
 
-## Part IV & V // The Triage Framework & Tools [WIP]
+## Part IV // The Platform Measurement Triage Framework
 
-*This section is currently being written and refined.*
+When a simple 50/50 split is ruled out due to interference or sample size constraints, the engineering question becomes: *what is the minimum viable quasi-experimental design that preserves causal validity?*
 
-In the upcoming sections, I will break down:
-* **The Platform Measurement Decision Matrix:** A concrete triage framework to choose between cluster holdouts, Synthetic DiD, interrupted time series, and off-policy simulation.
-* **Preflight Profiling:** How to automate pre-experiment statistical power calculations before committing engineering resources.
-* **Executive Defense Playbooks:** Practical scripts for handling stakeholder pushback on why a 50/50 A/B split isn't viable in interconnected systems.
+* **Interrupted Time Series (ITS) / CausalImpact:** Best when an intervention hits 100% of the platform simultaneously (such as a mandatory developer policy or platform-wide API change), provided there is a sufficiently long, stationary pre-intervention window and no concurrent macro shocks.
+* **Difference-in-Differences (DiD) & Synthetic DiD (SDID):** Ideal when you have panel data across regional clusters or sales territories. Where classic DiD relies on the strict parallel trends assumption, Synthetic DiD relaxes this by reweighting control units and pre-periods to match the treated unit trajectory.
+* **Synthetic Control Methods (SCM):** The gold standard for aggregate market holdouts when you have a small number of treated units (e.g., 3-5 regional markets) and a rich donor pool of unaffected control markets.
+* **Peer Exposure Mapping & Network Holdouts:** When graph topology is known (e.g., connected account networks or local marketplace clusters), partitioning by community structure allows you to estimate direct effects while explicitly modeling local spillover dosage.
 
-*Check back soon for the complete release, or connect on [LinkedIn](https://www.linkedin.com/in/aritrobanerjee/) to discuss platform measurement challenges.*
+---
+
+## Part V // The Tooling Gap & The Ideal Landing Zone for Open Source
+
+### Where Modern Tooling Falls Short
+
+Over the past few years, the open-source causal inference ecosystem has matured significantly. The preeminent standard in Python is **DoWhy** (hosted under the Linux Foundation's PyWhy organization), which formalized the four-step causal workflow: **Model $\rightarrow$ Identify $\rightarrow$ Estimate $\rightarrow$ Refute**.
+
+Libraries like DoWhy and EconML have done remarkable work making advanced estimators (Double Machine Learning, Instrumental Variables, Causal Forests) accessible. But for product teams operating at scale, the biggest operational bottleneck isn't estimation: it is **falsification and executive interpretability**.
+
+In production, an unrefuted causal estimate is dangerous. You need to know whether your estimate survives placebo treatments, random unobserved confounders, data subsetting, and sensitivity analysis. Yet this is precisely where existing tools hit usability hurdles:
+* Diagnostic outputs often produce raw, unaggregated terminal dumps rather than structured tabular summaries that product and engineering leaders can review together.
+* Interpreting p-values in falsification tests is counter-intuitive: in negative-control refutations, retaining the null ($p \ge 0.05$) represents robustness, which frequently confuses cross-functional stakeholders trained on standard A/B testing.
+* Existing toolchains focus heavily on unobserved confounding, but have limited native primitives to test for **platform network interference and SUTVA collapse** before an experiment ships.
+
+### The Ideal Landing Zone: Contributing Back to PyWhy / DoWhy
+
+This defines the ideal landing zone for contributing back to the open-source causal ecosystem. Rather than writing isolated, proprietary internal scripts or publishing another theoretical essay, the highest-leverage contribution is meeting practitioners where they already work: inside foundational frameworks like DoWhy.
+
+The goal is to help bridge the gap between academic econometrics and production platform engineering through two key fronts:
+
+1. **Standardized Diagnostic Summaries & Falsification UX:** Bringing first-class, standardized summary primitives and interpretable diagnostic tables to DoWhy's refutation ecosystem. Teams should be able to run a battery of refutations and immediately inspect an aggregated, defensible report that clearly articulates model stability, effect drift, and sensitivity bounds in a format suitable for executive decision-making.
+2. **Platform & Network Interference Diagnostics:** Expanding the refutation toolkit to natively test for SUTVA violations. By introducing stress tests that simulate marketplace spillovers, peer exposure cannibalization, and networked interference, platform teams can systematically evaluate whether their causal estimates are vulnerable to ecosystem leakage before rolling out global policy or algorithmic changes.
+
+By grounding platform-scale measurement realities into open-source primitives, we can help teams measure what cannot be simply A/B tested: with the statistical rigor of an econometrician and the clarity required for product execution.
+
+---
+
+*Connect on [LinkedIn](https://www.linkedin.com/in/aritrobanerjee/) to discuss platform measurement challenges or collaborate on open-source causal tooling.*
+
 
