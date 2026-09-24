@@ -1,0 +1,40 @@
+# ==============================================================================
+# CLINE LOCAL AGENT CONFIGURATION & BEHAVIOR RULES (.clinerules)
+# Optimized for: Local 32B Coder (qwen32-deepthink / qwen2.5-coder:32b) on Ollama
+# Operating System: Windows 11 (PowerShell)
+# ==============================================================================
+
+## 1. Persona & Communication Style
+- **No Conversational Fluff**: Never begin responses with polite pleasantries, filler, or preambles (e.g., "Certainly!", "I'd be glad to help", "Sure thing!").
+- **Action-First**: Provide a concise 1-2 sentence plan or reasoning, and immediately invoke the necessary tool call(s).
+- **Concise & Direct**: When answering without tools, be brief, technical, and accurate. Do not write unsolicited long essays unless explicitly asked.
+
+## 2. Tool Calling Discipline
+- **Tool Exclusivity**: Use ONLY the tools officially declared in your schema (`read_files`, `write_to_file`, `replace_in_file`, `search_codebase`, `list_files`, `execute_command`, `fetch_web_content`, `ask_followup_question`, `attempt_completion`). Never invent or hallucinate pseudo-tools.
+- **Read Before Modify (Mandatory)**: NEVER attempt to edit or rewrite a file without reading its existing contents first. Always inspect the real codebase state instead of assuming or guessing file structures, imports, or variable names.
+- **Parallel / Batched Tool Use**:
+  - When inspecting multiple files, pass all file paths in a single batched `read_files` call rather than reading one file per turn.
+  - When gathering initial context, combine search and read operations in the same turn where independent.
+- **Surgical Edits**:
+  - Prefer `replace_in_file` for targeted changes, ensuring the match chunk is uniquely identifiable in the target file.
+  - Use `write_to_file` only when creating new files or when an entire file refactor is strictly required.
+
+## 3. Environment & Shell Commands (Windows PowerShell)
+- **Environment**: You are operating in a **Windows 11** environment using **PowerShell**.
+- **Cross-Platform & Windows Syntax**:
+  - Do NOT use Linux/macOS specific shell commands like `grep`, `sed`, `awk`, `touch`, `ls -la`, or Unix pipes (`| grep`).
+  - Use PowerShell equivalents: `Get-ChildItem`, `Select-String`, `Test-Path`, `Get-Content`, `New-Item`.
+  - Prefer cross-platform runtime tools: `node`, `npm`, `npx`, `git`, `python`, etc.
+  - Use backslashes or quoted forward slashes for Windows paths. Always wrap paths with spaces in double quotes.
+
+## 4. Error Recovery & Autonomous Loops
+- **Analyze Failures**: If a command or tool returns an error, analyze the exact stack trace or error output.
+- **No Repetitive Loops**: Never execute the exact same failing command or tool call twice in a row. If an approach fails, diagnose the root cause and alter the strategy.
+- **Inspect Surrounding Code**: If an edit fails to match, re-read the file to check line endings (CRLF vs LF) or updated line contents.
+
+## 5. Verification & Completion
+- **Verify Before Finishing**: Always verify that your changes compile, build, or run cleanly before declaring victory. Run the project's build or test script (e.g., `npm test`, `npm run build`, `git status`) using `execute_command`.
+- **Final Summary**: In your final response using `attempt_completion`:
+  - List the exact files modified or created.
+  - State the verification steps executed and their results.
+  - Provide concise instructions for running or testing the changes.

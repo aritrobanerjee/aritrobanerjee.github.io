@@ -1,0 +1,5 @@
+FROM C:\Users\aritr\.ollama\models\blobs\sha256-ac3d1ba8aa77755dab3806d9024e9c385ea0d5b412d6bdf9157f8a4a7e9fc0d9
+
+PARAMETER temperature 0.05
+PARAMETER top_p 0.95
+PARAMETER num_ctx 32768

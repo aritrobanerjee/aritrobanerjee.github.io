@@ -1,0 +1,48 @@
+FROM qwen32-deepthink:latest
+
+TEMPLATE """{{- if .Suffix }}<|fim_prefix|>{{ .Prompt }}<|fim_suffix|>{{ .Suffix }}<|fim_middle|>
+{{- else if .Messages }}
+{{- if or .System .Tools }}<|im_start|>system
+{{- if .System }}
+{{ .System }}
+{{- end }}
+{{- if .Tools }}
+
+# Tools
+
+You may call one or more functions to assist with the user query.
+
+You are provided with function signatures within <tools></tools>:
+<tools>
+{{- range .Tools }}
+{"type": "function", "function": {{ .Function }}}
+{{- end }}
+</tools>
+
+CRITICAL INSTRUCTION:
+For each function call, you MUST output <tool_call> followed by the json object and </tool_call>.
+Example:
+<tool_call>
+{"name": "<function-name>", "arguments": <args-json-object>}
+</tool_call>
+{{- end }}<|im_end|>
+{{- end }}
+{{- range .Messages }}
+{{- if eq .Role "user" }}<|im_start|>user
+{{ .Content }}<|im_end|>
+{{- else if eq .Role "assistant" }}<|im_start|>assistant
+{{- if .Content }}
+{{ .Content }}
+{{- end }}
+{{- range .ToolCalls }}
+<tool_call>
+{"name": "{{ .Function.Name }}", "arguments": {{ .Function.Arguments }}}
+</tool_call>
+{{- end }}<|im_end|>
+{{- else if eq .Role "tool" }}<|im_start|>user
+<tool_response>
+{{ .Content }}
+</tool_response><|im_end|>
+{{- end }}
+{{- end }}<|im_start|>assistant
+"""
