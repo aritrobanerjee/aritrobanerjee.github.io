@@ -16,8 +16,8 @@ export const openSourceProjects: OpenSourceItem[] = [
     name: 'antigravity-quota-tracker',
     repoUrl: 'https://github.com/aritrobanerjee/antigravity-quota-tracker',
     description:
-      'Diagnostic CLI & global Antigravity Skill auditing model quota usage, rate limits (RPM/TPM), token velocity, and thread bloat across Google Antigravity workspaces.',
-    tag: 'Skill & CLI',
+      'Root-cause telemetry profiler & global skill decoding local Antigravity runtime databases to diagnose model token burn, thread monoliths, and rate limits.',
+    tag: 'Observability & CLI',
     version: 'v1.0.0',
     icon: (
       <svg
