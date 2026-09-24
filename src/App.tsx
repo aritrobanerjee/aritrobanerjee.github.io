@@ -6,6 +6,7 @@ import { Header } from './components/Header';
 import { Experience } from './components/Experience';
 import { Focus } from './components/Focus';
 import { Education } from './components/Education';
+import { OpenSource } from './components/OpenSource';
 import { Connect } from './components/Connect';
 import { CardDeckBackground } from './components/CardDeckBackground';
 import { WritingSection } from './components/WritingSection';
@@ -95,6 +96,9 @@ export const App: React.FC = () => {
 
             {/* Education & Recognition Section */}
             <Education items={profile.education} />
+
+            {/* Open Source Section */}
+            <OpenSource />
 
             {/* Footer / Connect Section */}
             <Connect
