@@ -94,48 +94,14 @@ We were trying to detect a +1.5% lift with a test design that was mathematically
 
 ---
 
-## Part IV // A Practical Triage Framework
+## Part IV & V // The Triage Framework & Tools [WIP]
 
-When a simple 50/50 split is off the table, what do you actually do?
+*This section is currently being written and refined.*
 
-In practice, I've seen teams cycle through a few different options. None of them are silver bullets, and each comes with its own compromises:
+In the upcoming sections, I will break down:
+* **The Platform Measurement Decision Matrix:** A concrete triage framework to choose between cluster holdouts, Synthetic DiD, interrupted time series, and off-policy simulation.
+* **Preflight Profiling:** How to automate pre-experiment statistical power calculations before committing engineering resources.
+* **Executive Defense Playbooks:** Practical scripts for handling stakeholder pushback on why a 50/50 A/B split isn't viable in interconnected systems.
 
-* **Interrupted Time Series (ITS) / CausalImpact:** This is usually the first instinct when an intervention hits the entire platform at once (like a mandatory developer policy or platform-wide API rollout). It can work well if you have a long, stable pre-period and no simultaneous macro shifts muddying the water. But if your market has strong seasonality or another team ships a change in the same week, it gets noisy quickly.
-* **Difference-in-Differences (DiD) & Synthetic DiD:** When you have panel data across regional markets or sales territories, this is often the workhorse. Classic DiD relies on the parallel trends assumption, which rarely holds cleanly in dynamic systems. Synthetic DiD helps relax that by reweighting control units and time periods to better match your treated trajectory before the intervention.
-* **Synthetic Control Methods (SCM):** If you only have a few treated units (say, 3 or 4 target regions) and a solid donor pool of unaffected markets, SCM is one of the cleanest tools available. The main challenge is finding donor units that genuinely don't experience spillover from the treated ones.
-* **Cluster & Network Holdouts:** When you actually understand the underlying graph (like account hierarchies or localized marketplace regions), grouping by clusters lets you estimate direct impact while keeping an eye on spillover between neighbors.
-
----
-
-## Part V // The Tooling Gap & Where I Want to Help
-
-### The Last Mile Problem in Causal Tooling
-
-When you look at the open-source landscape today, a lot of the heavy lifting is happening in libraries like **DoWhy** (part of PyWhy). What I appreciate about DoWhy is that it doesn't treat causal inference like just another machine learning estimator. It forces you through a disciplined workflow: you state your causal assumptions, see if the effect can even be identified mathematically, estimate it, and then - crucially - you try to refute your own findings.
-
-That last step - refutation - is where I think the real battle is fought in production systems. Plugging data into an algorithm and getting a number back is relatively easy. The terrifying part is asking: *how do I know this number isn't completely bogus?*
-
-Did an unobserved confounder sneak in? What happens if I replace the treatment with random noise? What happens if I drop a chunk of the data?
-
-Yet whenever I've tried to use these tools with real product teams, this is where we run into a wall:
-* The diagnostic outputs often look like raw, disconnected terminal prints. If you're trying to share results with an engineering lead or a business partner, you spend half your time manually compiling tables or explaining what the raw numbers mean.
-* The statistics feel inverted. In standard A/B testing, people look for $p < 0.05$. In negative-control refutations, retaining the null ($p \ge 0.05$) means your model held up. Watching a room full of smart people get tripped up by that directionality is surprisingly common.
-* And if you're dealing with platforms where units leak into each other - which is almost everything I've worked on - there aren't really off-the-shelf primitives to stress-test whether your estimate collapses under network interference or marketplace spillover.
-
-### Where I'm Focusing: Contributing Back to DoWhy
-
-That friction is what got me interested in contributing directly to DoWhy, rather than just writing internal scripts or blogging about it.
-
-I don't think the community needs another bespoke causal package. What feels much more useful is helping make the existing refutation ecosystem friendlier and more resilient for people running real products:
-
-1. **Making Refutation Summaries Human-Readable:** Building standardized, clean summary utilities right into the refutation layer. If someone runs four or five stress tests, they should be able to get a single, clear diagnostic table (for notebooks, docs, or slide decks) that explains stability, effect drift, and sensitivity bounds without needing a statistics PhD to decode the console output.
-2. **Bringing Network & SUTVA Stress Tests to Open Source:** Starting to explore refuters that explicitly test for interference. If we can make it simple to plug in an adjacency matrix or cluster layout and test whether an estimate is vulnerable to peer leakage, it gives teams a fighting chance at catching SUTVA collapse before they ship.
-
-I don't have all of this figured out, and measurement in interconnected systems is always messy. But if we can make falsification a little more intuitive and accessible, it saves teams from shipping on false confidence.
-
----
-
-*I'm actively exploring this space and working through these ideas. If you're wrestling with similar measurement problems or working on open-source causal tools, feel free to connect on [LinkedIn](https://www.linkedin.com/in/aritrobanerjee/).*
-
-
+*Check back soon for the complete release, or connect on [LinkedIn](https://www.linkedin.com/in/aritrobanerjee/) to discuss platform measurement challenges.*
 
