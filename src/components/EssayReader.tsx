@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import profileData from '../data/profile.json';
 import { Connect } from './Connect';
+import { TriageDiagnosticConsole } from './TriageDiagnosticConsole';
 
 interface EssayReaderProps {
   markdown: string;
@@ -146,6 +147,9 @@ export const EssayReader: React.FC<EssayReaderProps> = ({ markdown, icon, onBack
               <td className="p-3 align-top leading-relaxed">{children}</td>
             ),
             code: ({ className, children }) => {
+              if (className?.includes('language-triage-console')) {
+                return <TriageDiagnosticConsole />;
+              }
               const isBlock = className?.includes('language-');
               if (isBlock) {
                 return (
